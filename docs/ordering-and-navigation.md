@@ -27,9 +27,9 @@ Originally: rank set both card size and position. **The prototype retired the si
 
 ## Order at launch
 
-**`bme290` (Thor's Hammer PCB) leads** — and it leads partly by default: it is the only lead-tier card that is *already fully evidenced*. 3D render PDFs, gerbers, BOM PDFs and DRC reports are in the repo today; it needs nothing from Dmitri.
+**`bme290` (Thor's Hammer PCB) leads — confirmed by Dmitri 2026-08-23**, not merely by default. It is also the only lead card *already fully evidenced*: 3D render PDFs, gerbers, BOM PDFs and DRC reports are in the repo today; it needs nothing from Dmitri.
 
-Named for the top, in rough order: **`bme290` or `bme474`, then Rotom, then FTC mentorship.**
+Named for the top, in rough order: **Thor's Hammer PCB (position 1, confirmed), then `bme474`, then Rotom, then FTC mentorship.** The tympanometer is explicitly *not* the lead card — demoted on thin content (closed-source, still in development).
 
 Rotom and the mentorship are at **zero material today** — the same condition that demoted the tympanometer. **The order re-sorts as the #10 intake queue fills.**
 

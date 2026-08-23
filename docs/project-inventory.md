@@ -8,7 +8,7 @@ Evidence column: **repo** = code exists on GitHub · **artifact** = files exist 
 
 | Project | Year | Evidence | Notes |
 |---|---|---|---|
-| mHealth Tympanometer (Palmeri Lab) | — | none | **Lead candidate.** NIH-funded, Duke Pratt article, South Africa field test. Dmitri's contribution: **software, plus a full Altium → KiCad migration of the board design**. Project is **still under active development — he can't speak freely about it.** No repo on the account. |
+| mHealth Tympanometer (Palmeri Lab) | — | none | ~~Lead candidate~~ **— demoted 2026-08-23; Thor's Hammer PCB leads.** NIH-funded, Duke Pratt article, South Africa field test. Dmitri's contribution: **software, plus a full Altium → KiCad migration of the board design**. Project is **still under active development — he can't speak freely about it.** No repo on the account. |
 | `bme474` — nRF52833 Zephyr firmware + pressure processing | 2024 | repo | Jupyter + firmware, 4-person team (Herzberg, Morales, Duerr, Breit) |
 | `bme290` — Thor's Hammer PCB | 2024 | repo (artifacts) | KiCad, 3D render PDFs, BOM PDFs, one-shot blinking circuit |
 | `EEG-turned-EMG-` — BME354 final | 2022 | repo | Own circuit design: bandpass + notch filters, RPi Pico, LED on blink. Set out to read alpha waves, pivoted to EMG. Video slot in README is still `*INSERT HERE*`. |
@@ -39,7 +39,7 @@ Disney (`wai`, People Counter, Signal4, Figaro, MagicMobile) · GFC ops platform
 ## Decisions so far (issue #2)
 
 - **Ranking axis: "coolness"** — Dmitri's own taste, not recruiter-impressiveness. Enumerate first, rank second. (2026-08-20)
-- **Lead tier (4):** mHealth Tympanometer · EEG-turned-EMG · `bme290` Thor's Hammer PCB · `bme474`
+- **Lead group (4):** `bme290` Thor's Hammer PCB **(lead card, position 1 — confirmed 2026-08-23)** · `bme474` · EEG-turned-EMG · mHealth Tympanometer *(demoted from lead: closed-source, thin content)*
 - **What the lead tier has in common:** not "hardware" — hardware *with substantial code behind it*. Both bme474 and the EEG/EMG span an analog/physical build and real software. Use this as the lens for weighting the rest.
 - **Cards carry status.** A "little status bar" on the card — the archive is honest about work that isn't finished, not just work that's amateur. Vocabulary TBD.
 - **`doodlejump` is unfinished** and would move up if ever completed. Mondo's is mid-build. EEG README still has `*INSERT HERE*` for its demo video.
