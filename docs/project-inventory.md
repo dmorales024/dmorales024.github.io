@@ -50,6 +50,6 @@ Disney (`wai`, People Counter, Signal4, Figaro, MagicMobile) · GFC ops platform
 - **Godot games get individual cards** — `first-godot-game`, `adventureGame`, `doodlejump` are self-directed, not tutorials.
 - **Grouping principle (derived):** work done by *following someone else's instructions* groups into one area; work where *Dmitri chose what to build* gets its own card. This is the placement rule for future additions.
 - **No photo → no card.** A project with nothing to show stays off the page rather than appearing as an empty card. High school CAD is out on these grounds; Science Olympiad photos exist but aren't enough. Resolves sub-question 4 of #2.
-- **Weight structure (3 levels):** lead tier (4) · standard card (self-directed work, one card each) · grouped area (tutorial-follow-along, minimal). Resolves sub-question 2.
+- **Weight structure (3 levels):** ~~lead tier (4) · standard card · grouped area~~ — **RETIRED by #7 (2026-08-23).** Study D uses uniform plates; every card is the same size. `rank` is position only. The lead four still lead, but by *order*, not by size. The Flutter group is an ordinary plate.
 - **FTC Vanta 31000 is a project card,** not an about-page or leadership surface. Resolves sub-question 3.
 - **`first-react-app` and `starter-git` are OUT** (2026-08-20).

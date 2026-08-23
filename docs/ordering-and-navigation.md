@@ -19,9 +19,11 @@ That cap is the load-bearing part. #2 established *no photo → no card*; #3 ext
 
 Rank must be **stored explicitly per project** — an integer or an ordered list. Nothing in the data can compute it. (Chronological or category ordering would have come free from a date or tag field; curation does not.)
 
-### One number, two jobs
+### One number, one job — amended by #7 (2026-08-23)
 
-Weight (card size, from #2) and position (from #3) are **the same ranking**. A project's rank sets both how big its card is and where it sits. No separate dial.
+Originally: rank set both card size and position. **The prototype retired the size half.** Study D was chosen — **all plates are identical**, so `rank` now controls **position only**, and #2's three weight tiers (lead / standard / grouped) are gone. The Flutter group is an ordinary plate like everything else.
+
+**Order is supplied by hand.** Dmitri provides the explicit sequence.
 
 ## Order at launch
 
@@ -56,3 +58,15 @@ A card carries exactly **two pieces of information** before a click:
 Binary, settled. No "abandoned" state: a stalled project reads as in progress indefinitely, and Dmitri accepts that as an honest description of how his projects actually go. (`doodlejump` is the case in point — *"I will get back around to it once I finish my other project."*)
 
 This settles the status indicator left open by #2.
+
+## Chosen layout — issue #7, 2026-08-23
+
+**Study D — "Plates".** Photo-maximal, **fixed two-up**, sized so **four plates land in one screen**. Every plate identical; no size hierarchy.
+
+Rejected: *A — contact sheet* (dense uniform tiles), *B — weighted mosaic* (the only study that rendered the three tiers literally), *C — index* (text-dominant).
+
+Prototype: https://claude.ai/code/artifact/9bcd1c94-2afd-48ec-a283-99433235f9a6
+
+**Visual direction, approved:** exposed-copper amber as the sole accent, solder-mask green for status only, cool paper neutrals. `Archivo` display / `Newsreader` body / `IBM Plex Mono` labels. Deliberately unlike Mondo's neon.
+
+**Detail page approved as prototyped** — prose with images interleaved, links woven in as calls to action, status pill, no year, no tech list.

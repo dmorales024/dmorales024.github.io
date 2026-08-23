@@ -23,8 +23,8 @@ type Project = {
   slug: string;      // content/<slug>/ — also the URL
   title: string;     // display name; never a course code
   status: 'in-progress' | 'complete';
-  hero: string;      // explicitly chosen file in photos/ — the grid's cover image
-  rank: number;      // sets BOTH card size (#2) and scroll position (#3)
+  hero: ImageMetadata; // Zod image() helper (#5), not a bare string — the grid's cover image
+  rank: number;      // scroll position only — card size retired by #7; hand-supplied order
 };
 ```
 
