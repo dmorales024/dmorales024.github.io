@@ -20,7 +20,11 @@
 Drop image files directly in `photos/` — a handful of representative screenshots across the
 seven apps is plenty; this does not need per-app coverage.
 
-Naming: `01-description.jpg`, `02-description.jpg`, … — lowest number is the hero/cover image.
+Naming: `01-description.jpg`, `02-description.jpg`, … — zero-padded two digits, descriptive.
+Numbering orders the photos; it does **not** pick the cover.
+
+**Hero image:** name the cover shot here — it is set explicitly per project (#4), not inferred
+from the filename. _(blank — Dmitri to supply)_
 
 Currently empty — no photos supplied yet.
 
@@ -32,6 +36,8 @@ what this stretch of tutorial-following was, why it was done, what was learned, 
 _(blank — Dmitri to supply the narrative)_
 
 ## Year
+
+_Collected for the record only — #4 settled that no year is displayed anywhere on the site._
 
 September 2022
 
