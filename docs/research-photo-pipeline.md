@@ -685,3 +685,18 @@ push → call the Pages build job.
 - All size, dimension, and encoder measurements: taken 2026-08-23 against the 12 real images in
   `content/`, using `sips`, `magick` 7.1.0-48, `cwebp` 1.2.4, and `avifenc`, plus HEIC originals
   recovered from git history via `git cat-file -s`.
+
+
+---
+
+## History rewrite — DECLINED, 2026-08-27
+
+Dmitri's decision: **do not rewrite history.** Closed; do not raise again.
+
+The pre-strip version of `content/ftc-vanta-31000/photos/9356BC72…jpg` remains reachable in commit `925d2d04` carrying `GPSLatitude 29/1,45/1,1296/100` / `GPSLongitude 95/1,21/1,2675/100` (Houston — an FTC competition venue, not a private address). Five HEIC originals also remain in history.
+
+**Consequences accepted:**
+- Those coordinates stay publicly retrievable.
+- `.git` stays at ~37 MB for 12 photos, and every future photo compounds it. This is a *repo* weight issue, not a *published site* weight issue — Pages serves the working tree, so it does not affect page load or the 1 GB site limit.
+
+**Still in force:** EXIF is stripped from all photos going forward, and `-auto-orient` must precede `-strip`.
