@@ -5,20 +5,16 @@ status: "in-progress"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+A marketing site for a bar and grill — menu, Greek Night, and an about page. Real client, still being built.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+The most useful thing I did on it was decide what not to build.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+The original plan had a backend: Spring Boot, a managed SQL database, an admin screen so the owner could edit his own menu. I costed it out properly. A load balancer, a NAT gateway and a database instance billed around the clock come to somewhere between fifteen and ninety dollars a month. The front end — the entire site — runs at one or two dollars a month on static hosting. That's a lot of money and a lot of moving parts for a menu that changes twice a year and is edited by one person.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+So the site became genuinely static: every route pre-rendered to a real HTML file at build time, uploaded to object storage and served through a CDN. No server, no database, nothing to keep running. **A four-category menu of flat records is content, not data** — no relationships, no transactions, no concurrent writers. I wrote the reasoning down as an architecture decision record, along with the omission itself, so that the next person to look at this — possibly me — starts from *here is why not* rather than proposing it again as an obvious improvement.
 
-  Delete this comment block when you start writing.
-*/}
+The visual work is the other half. Mondo's is known locally for its neon, and the brief asked for neon on the menu cards but not the body text, with a flicker like a late-night hotel sign. That turned out to be a genuinely hard CSS problem. A text shadow cannot make hollow neon — it always renders a filled letter with a halo around it. Real tube requires stroking the text, making the fill transparent, and chaining drop shadows that follow the stroke rather than the glyph. Each character has to be its own element, because a flat image can't have one letter die on its own. And only letters may fail alone: a lone apostrophe blinking reads as a bug rather than a dying tube.
 
+The menu is a grid of cards that flip in place to show the description on the back, with the height locked so the grid can't reflow mid-flip. The dimming layer behind the text had to be part of the card's background rather than a separate overlay — an overlay forces the content above it into a stacking context, which is exactly how the price kept escaping its corner and landing on top of the add-ons.
+
+**Both of those were found by rendering, not by reasoning.** That's the honest summary of the whole project: the expensive problems were not the ones I predicted.

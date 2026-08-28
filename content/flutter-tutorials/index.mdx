@@ -5,20 +5,16 @@ status: "complete"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+Seven apps in about a week, each one deliberately a little harder than the last. Not seven ideas — one ramp.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+The goal was cross-platform mobile: write once in Dart, run on both phones. The route was a course, and the projects came in a sequence that only makes sense in order.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+It starts with a single file and no dependencies at all, which is just widgets and layout — learning that in Flutter everything visible is a widget and layout is composition rather than markup. Then splitting a UI across several files. Then a quiz, which is the first one that has to remember anything: which question you're on, what you answered, what the result was. Then an expense tracker, with models, formatted dates and a chart — the first that looks like an app rather than an exercise.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+From there it gets device-shaped. The places app reaches for the camera and the filesystem and introduces real state management, which is the point where you stop passing data down through constructors and start letting the app hold state properly. The meals app is about navigation: multiple screens, routing between them, filtering and favourites carried across. And the shop app is the one everything else was building toward — twenty files, app-wide state and a real network layer talking to a backend.
 
-  Delete this comment block when you start writing.
-*/}
+The last is about fourteen times the size of the first, and the folder structure tells the same story: one file at the start, and by the end the conventional split of models, providers, screens and widgets — arrived at by being walked into it rather than by reading about it.
 
+Flutter came back around later, for prototyping Bluetooth work. But when a companion app actually mattered I wrote it natively instead, which is its own kind of answer about where the framework fits.
+
+They were tutorials and I'm not going to dress them up as more than that. They're here because the work happened, and because a week of deliberate practice with a visible difficulty curve is worth more than any one of the seven apps.

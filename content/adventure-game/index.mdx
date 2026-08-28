@@ -5,20 +5,14 @@ status: "complete"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+A 2D platformer, built by following a Godot tutorial end to end and then actually shipping it.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+A knight, coins to collect, green slimes patrolling the platforms, and a killzone at the bottom that resets the level when you fall. The art isn't mine — it's a Creative Commons pack that ships with the tutorial, credited in full in the repo — and I want to be straightforward about that. What's mine is the code and the decision to finish.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+Two bits were more interesting than the tutorial made them sound.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+The slimes have a raycast on each side and reverse direction when one hits a wall, which means an enemy works out the level geometry for itself. You can drop a slime onto any platform and it patrols correctly with no waypoints authored for that instance. Behaviour that adapts to its surroundings costs about the same as behaviour that's hard-coded, and it's the difference between a level you can edit and a level you have to maintain.
 
-  Delete this comment block when you start writing.
-*/}
+The other is dying. Touching the killzone doesn't just reload the scene. It drops the whole game into half speed, deletes the player's collision shape so the knight falls through the world, and only then starts a timer that restores normal time and resets. Half a second of slow-motion *oh no* before the reset. It's a tiny amount of code and it's the difference between a game and a state machine, and it's the thing that made me understand that game feel is engineered rather than found.
 
+It got far enough to export and package as a real double-clickable application, which is further than most tutorial follow-alongs go. What it doesn't have is a second level, a menu, or a win condition — the score counts up and has nowhere to go. It's a complete vertical slice rather than a complete game. [The project is here](https://github.com/dmorales024/adventureGame).

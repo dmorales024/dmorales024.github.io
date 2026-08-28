@@ -5,20 +5,12 @@ status: "complete"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+The first thing I made in a game engine: dodge the mobs, survive, watch the score climb.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+A player you steer around the screen, enemies that spawn off the edges and drift across, a collision that ends the run, and a HUD keeping score and putting the start message up between attempts. That's the whole game, and being the whole game is the point — it's small enough that every piece is visible at once.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+What it taught was the engine's model rather than anything about games. Godot organises everything as scenes made of nodes, where a scene can be a whole level or a single reusable object, and instancing one inside another is how you compose a game. The player is a scene. A mob is a scene. The main level is a scene that spawns the others. Once that clicked — that there's no distinction between "a level" and "an object", only nodes and the trees you assemble them into — the rest of the engine stopped feeling arbitrary.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+Signals were the other idea worth carrying away: nodes announce that something happened and don't care who's listening. The player says it was hit; the main scene decides that means the game is over. That's a habit that transfers well beyond a game engine, and it's most of why the platformer that came after this one was straightforward to put together.
 
-  Delete this comment block when you start writing.
-*/}
-
+[The project is here](https://github.com/dmorales024/first-godot-game).

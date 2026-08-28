@@ -5,20 +5,18 @@ status: "complete"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+A CPAP machine holds a sleeping patient's airway open by pushing air at a set pressure. Too low and the airway still collapses; too high and the patient can't tolerate it and stops using the machine. Someone has to look at how a patient is actually breathing and adjust.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+We built for a ward — several bedside monitors and staff who need to see all of them at once. A nurse walks into a room and updates a patient's details at the bedside. A doctor at a central station pulls up any active room, reads the most recent session, pages back through earlier tests, and changes the prescribed pressure without walking down the hall. Two very different screens, one shared source of truth.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+That shaped the architecture into two applications rather than one: a REST API server that owns the database and all the logic, and a client that renders HTML and holds no data of its own. Both screens are the same client code against the same API, so the two views cannot disagree about a patient. Browser-rendered rather than a desktop app, because a hospital does not want to install and update software on every bedside machine — a browser is already on all of them, and a fix ships once to one server.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+The part I find most interesting is the analysis. Input is a text file from a Venturi flow meter, still in raw ADC counts. Calibrate to real pressure units; use the pressure drop across the tube's constriction to get volumetric flow; compare the inspiratory and expiratory taps to work out which way the air is moving, which turns flow into a signed breathing waveform. Smooth it, then find the breaths.
 
-  Delete this comment block when you start writing.
-*/}
+Finding the breaths is where the work was. A stock peak finder over-reports — one breath can present as a double-humped peak and get counted twice. So each candidate peak is checked for whether the signal actually returns to near zero on either side, and where it doesn't, compared against its neighbour to decide which is the real maximum. **Getting the breath count right is the difference between a plausible number and a correct one**, and everything downstream depends on it: rate, leakage, and apnea events, defined as any gap of ten seconds or more between breaths.
 
+Unit tests across the whole thing, running in CI on every push. Built with Connor Shovlin.
+
+It did not entirely land. At the deadline the patient-side auto-refresh wasn't working and historical plot rendering arrived late. The core loop — record, analyse, store, retrieve, adjust — worked end to end on a deployed VM. If I rebuilt it I'd move validation out of the interface and behind the API, where it belongs: a client that skips the form shouldn't be able to push values the server never checks.
+
+[There's a video of the whole thing running](https://youtu.be/5Rh4xPBnquM).

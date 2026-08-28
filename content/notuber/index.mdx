@@ -5,20 +5,16 @@ status: "complete"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+The premise handed to us: you have joined the algorithms group at a ride-hailing company in New York. Passengers appear on a map and request rides. Drivers sign in whenever they feel like driving. Matching has been outsourced, and your job is to replace the system that does it.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+Underneath the framing it's a live matching problem over the real New York road network, with two goals that can't both be maximised — how long passengers wait, and how much drivers earn. There is no correct answer, only positions on a trade-off. So we built five strategies against the same simulation and measured both.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+The first is deliberately stupid: match the first waiting passenger to the first free driver, ignoring geography entirely. The second computes straight-line distance to every available driver and takes the nearest. The third stops approximating and matches on actual shortest drive *time* through the road graph, using Dijkstra's. The fourth keeps that idea but makes it cheap — every intersection preprocessed into a KD-tree so snapping a passenger to their nearest road node is a spatial lookup rather than a scan of the whole city, and A\* in place of Dijkstra's so the search is pulled toward the destination instead of expanding blindly in all directions. The fifth stops treating drivers as simply free or busy: a driver a few minutes from finishing a fare might still reach the passenger first, so it weighs waiting for them against dispatching someone idle.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+**The result that stuck with me is how early the gains arrive.** Brute force left passengers waiting over thirteen hours on average and cleared barely half as many rides. Adding the crudest possible notion of distance — a straight line, ignoring that New York has roads — collapsed that to about twenty minutes. Everything after it, including the genuinely clever version, moved the wait time by a rounding error.
 
-  Delete this comment block when you start writing.
-*/}
+That isn't an argument against the KD-tree and A\*. They're runtime optimisations; they make finding the answer cheaper, not the answer better, and the fifth strategy did meaningfully lift driver earnings. But it's a useful thing to have learned early: **most of the benefit usually comes from the first idea that isn't dumb, and sophistication after that has to justify itself against a baseline that's already good.**
 
+The honest gap is that we never instrumented wall-clock time, so we argued the complexity improvement without ever measuring the speedup that was the whole point of the fourth strategy. That's the first thing I'd fix.
+
+Built with a teammate. [The notebooks and the write-up are here](https://github.com/dmorales024/NotUber).

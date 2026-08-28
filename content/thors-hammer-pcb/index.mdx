@@ -5,20 +5,12 @@ status: "complete"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+A one-shot blinking circuit, designed from schematic to fabrication-ready board in KiCad.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+The brief was a timer circuit that fires once and blinks — simple enough to hold in your head, which is exactly what makes it a good first board. The interesting part was never the circuit. It was everything that surrounds a circuit once you decide it has to actually be manufacturable.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+So the work went past "does it simulate" and into the things a fab house cares about. The board went through three revisions before it was signed off, and the artifacts from that process are the real record: separate front and back copper layers, solder mask, solder paste, silkscreen, and edge cuts, each exported as its own plot. A design rule check, run and archived as a report rather than glanced at and dismissed. A bill of materials generated from the schematic instead of retyped. A 3D render, because seeing the board with components standing on it catches things a flat layout never will.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+That's the lesson worth keeping. **A schematic is a claim about what should happen; a fabrication package is a claim someone else can act on.** Learning the difference between the two — and learning that the second one is most of the work — was the point of the exercise.
 
-  Delete this comment block when you start writing.
-*/}
-
+It's also the most completely documented thing in this archive. Every gerber, every plot, the DRC report, the BOM and the renders are all in the repo. [Take a look at the board package](https://github.com/dmorales024/bme290) if you want to see what a finished one looks like.

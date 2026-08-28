@@ -5,20 +5,12 @@ status: "in-progress"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+A tympanometer measures how well an eardrum moves. Push a known tone into a sealed ear canal, sweep the pressure, and watch how much sound comes back — a healthy eardrum is compliant at one particular pressure and stiff either side of it. The curve that falls out of that sweep tells an audiologist whether there's fluid behind the drum. This one was built to do that in places where the usual clinical machine isn't available.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+I worked on it in the Palmeri Lab at Duke, on an NIH-funded project that has since been field-tested in South Africa. The device isn't public and is still under development, so what I can describe is my own contribution rather than the design.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+**The firmware.** It runs on an nRF52833 under Zephyr, structured as a state machine: idle until triggered, drive the actuator until a seal is detected, then sweep pressure while sampling the microphone, then transmit. Each stage has its own failure and warning paths — the seal can be lost mid-measurement, the sweep can time out — and the device has to say which happened rather than just failing. The measurement chain runs from a microphone sampled into a buffer, reduced to an envelope, into a compliance curve, out over Bluetooth to an Android app. Alongside it: a custom board port so the same application builds on both our hardware and a stock development kit, continuous integration that builds both targets on every push, and a set of standalone test applications so each peripheral could be brought up on its own instead of debugging everything at once.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+**The board.** I also carried out a full migration of the hardware design from Altium to KiCad — one main board, six schematic sheets covering power, the microcontroller, the sensor front end, the motor driver and audio. Moving a design between EDA tools is not a conversion so much as a re-drawing with a reference open beside you: footprints, 3D models and library links are where fidelity quietly goes missing.
 
-  Delete this comment block when you start writing.
-*/}
-
+Duke has written publicly about the project, and [their article is the best public look at the device](https://pratt.duke.edu/). The photographs there are theirs, not mine.

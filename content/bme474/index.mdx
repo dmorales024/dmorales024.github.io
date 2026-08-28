@@ -1,24 +1,16 @@
 ---
-title: "bme474 — NEEDS A DISPLAY NAME"
+title: "bme474"
 status: "complete"
 # hero: "./photos/FILENAME.jpg"   <- REQUIRED: pick the cover shot
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+Embedded firmware for a pressure-sensing device, built on the nRF52833 with Zephyr — and the project where the toolchain stopped being an obstacle and started being a tool.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+The device measures pressure and turns the raw sensor stream into something meaningful. Half the work was on the microcontroller: a devicetree overlay describing the hardware, a Zephyr configuration for the peripherals, and firmware structured around a state machine that's documented as a diagram in the repo rather than living only in someone's head.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+The other half was in Jupyter. Sensor data does not arrive clean, and deciding what counts as signal is a judgment call you have to make with the actual numbers in front of you. The notebooks are where the processing was worked out — high-pass filtering the pressure trace, iterating on the outputs, checking whether the thing the firmware reported matched what the data actually said. Writing the analysis in a notebook first and only then committing it to C is a habit worth naming, because it is much cheaper to be wrong in Python.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+Built with Jackie Herzberg, Kyle Duerr and Grant Breit.
 
-  Delete this comment block when you start writing.
-*/}
-
+What carried forward from this project was not any particular line of code. It was the shape of the work — devicetree, Kconfig, a state machine, a data pipeline to check yourself against — which is the same shape everything embedded that came after it took.

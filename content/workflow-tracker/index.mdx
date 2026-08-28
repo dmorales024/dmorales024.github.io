@@ -5,20 +5,12 @@ status: "complete"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+A sidebar extension for my editor that keeps a checklist of the development workflow I actually follow, so I stop skipping steps.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+The premise is that I'd accumulated a set of repeatable practices — write the contract spec before implementing, generate a plan, review the changed code, run the pre-ship checks — and was following them inconsistently. Not because I disagreed with them, but because nothing in the editor reminded me they existed. A process you keep in your head is a process you drop the moment work gets interesting.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+So the extension puts the steps in the sidebar next to the code. Each task carries its own list. Every step is labelled by how it gets done — automated, manual, or a mix — which turned out to matter more than expected: knowing whether a step is something to run or something to think about is most of the friction in following a process at all. Steps can be completed or explicitly skipped, and skipping is deliberate, because a checklist that only permits completion gets abandoned the first time a step doesn't apply. Each one can copy its associated prompt straight to the clipboard, so the gap between reading the step and doing it is one click. There's a table view for looking at the whole workflow at once.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+State lives in the editor's global storage rather than in the repository, which is the right call: this is my process, not something to impose on anyone who clones the project.
 
-  Delete this comment block when you start writing.
-*/}
-
+Written in TypeScript and packaged as an installable extension. It's a small tool with an unglamorous job, and it's the one I use most often.

@@ -5,20 +5,16 @@ status: "complete"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+Press a button on a development board. My phone plays a sound. That is the entire product.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+It exists because headphones work too well. Someone knocks, and I don't hear it. So the button goes where the person knocking is, and the noise comes out where I am. The alert is a metal-pipe-falling sound effect, which should tell you how seriously the project takes itself.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+The interesting decision is that it's a round trip rather than a one-way ping. There are two characteristics on the custom Bluetooth service: one the device uses to notify the phone that someone knocked, and one the phone writes back to say the sound actually played. That second one is the point. A notification only tells the firmware that a packet left. It doesn't tell you the phone was awake, that the app was still connected, or that any noise happened. So the phone acknowledges *after* playback, the device turns its indicator green only when that acknowledgement lands, and if nothing comes back within five seconds it flashes red instead. **The button tells you whether the knock got through** — which is the difference between a doorbell and a doorbell you can trust.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+The firmware is Zephyr on an nRF52833, running a state machine through boot, disconnected, and a connected cycle of idle, knock pending, then acknowledged or failed. There's no screen and usually no serial console attached, so the board's LEDs are the entire interface: a slow red pulse while it waits for the phone, yellow while sending, fast yellow awaiting the acknowledgement, green on success, a double red flash on failure. Every state got its own pattern rather than a generic blink, because a status light that means one thing is not a status light.
 
-  Delete this comment block when you start writing.
-*/}
+The button does double duty — a short press knocks, a long press resets out of the error state. Presses while disconnected are ignored rather than queued, on the grounds that a knock which can't be delivered now isn't worth delivering later.
 
+The other half is an iOS app in SwiftUI and CoreBluetooth: scan for the device by name, connect, subscribe, play the sound, write the acknowledgement back.
+
+It's a weekend build and the seams show — the service identifiers are still placeholders, which is fine for one device on a desk and fine for nothing else. [The firmware and the app are both here](https://github.com/dmorales024/botherDmitri).

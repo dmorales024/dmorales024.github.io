@@ -5,20 +5,14 @@ status: "complete"
 rank: 0
 ---
 
-{/*
-  WRITE THE STORY BELOW. A few hundred words, in your voice.
-  Not a spec sheet — the inspiration, the process, what it actually did,
-  what you learned, what went wrong.
+Job applications on Workday ask you the same questions every time. This fills them in.
 
-  Drop a photo in wherever it belongs in the story:
-      ![a short description](./photos/filename.jpg)
+Anyone who has applied for engineering roles knows the specific tedium: you upload a résumé, the site parses it badly, and then you retype your education, every previous job, and your skills into a multi-page form — and then do it again on the next posting, into an identical form, because each company runs its own instance.
 
-  Link out mid-sentence, as a call to action:
-      [click here to see the CAD](https://...)
+So this drives the browser instead. It opens the application, walks the pages, and fills the fields from a separate file holding my details, work history, education and skills. Keeping that data in its own module rather than inline was the one design decision that mattered: the personal information stays out of the code and out of version control, and updating a job title means editing one file rather than hunting through automation logic.
 
-  Photos currently in this folder:
-  (no photos uploaded yet)
+The awkward part is that Workday is a single-page application, so elements don't exist when the page nominally loads — they appear when the framework gets around to rendering them. Automation that assumes a loaded page is a loaded page fails constantly and unpredictably. The fix is to wait for each specific element to actually become visible before touching it, wrapped so a failure reports which element never showed up rather than throwing an opaque timeout.
 
-  Delete this comment block when you start writing.
-*/}
+**The lesson generalises past scraping: any interface that renders asynchronously has no single moment of "ready", and code that pretends otherwise is flaky by construction.** Wait for the thing you need, not for the page.
 
+It's small, it's unglamorous, and it saved a great deal of typing during a job hunt. [The script is here](https://github.com/dmorales024/workday-autofill).
