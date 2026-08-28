@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chess Board Coaster — Dmitri Morales</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>:root{--neon:#FF3DCB;--alt:#38F0FF;--ground:#08050C;--panel:#100A16;--line:#FF3DCB33;
+--ink:#DDEAF2;--ink-soft:#7C93A3;--ew:2px;
+--display:'Orbitron',"Trebuchet MS",sans-serif;--body:'Rajdhani',"Avenir Next",system-ui,sans-serif;
+--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px 96px}
+.top{padding:64px 0 34px;border-bottom:1px solid var(--line)}
+.mark{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.4vw,42px);letter-spacing:.06em;margin:0;color:var(--neon);text-wrap:balance}
+.sub{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.22em;color:var(--ink-soft);margin:14px 0 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding-top:34px}
+.plate{display:flex;flex-direction:column;text-decoration:none;background:var(--panel);border:var(--ew) solid var(--line);transition:border-color .22s,box-shadow .22s,transform .22s}
+.frame{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0B0710}
+.shot{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.72);transition:filter .3s,transform .35s}
+.plate:hover,.plate:focus-visible{border-color:var(--neon);box-shadow:0 0 34px -6px var(--neon),inset 0 0 22px -14px var(--neon);transform:translateY(-3px);outline:none}
+.plate:hover .shot,.plate:focus-visible .shot{filter:saturate(1);transform:scale(1.035)}
+.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:repeating-linear-gradient(135deg,#0B0710 0 11px,#0D0813 11px 22px)}
+.empty-mark{width:34px;height:34px;border:1px solid var(--line);transform:rotate(45deg)}
+.empty-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.24em;color:var(--ink-soft)}
+.meta{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px}
+.name{font-family:var(--display);font-weight:500;font-size:clamp(15px,1.5vw,19px);letter-spacing:.03em;margin:0;color:var(--ink);text-wrap:balance}
+.status{margin:0;display:flex;align-items:center;gap:9px;font-family:var(--mono);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--ink-soft);flex:none}
+.is-progress .status{color:var(--alt)}
+.is-progress .dot{background:var(--alt);box-shadow:0 0 8px var(--alt);animation:pulse 1.9s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.32}}
+#field{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.shell{position:relative;z-index:1}
+.page{max-width:660px;margin:0 auto;padding:56px 24px 120px}
+.back{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;margin-bottom:34px;border-bottom:1px solid transparent}
+.back:hover,.back:focus-visible{color:var(--neon);border-bottom-color:var(--neon);outline:none}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);letter-spacing:.04em;color:var(--neon);margin:0;text-wrap:balance;line-height:1.14}
+.pill{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-family:var(--mono);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft);border:1px solid var(--line);padding:6px 13px}
+.pill.prog{color:var(--alt);border-color:#38F0FF44}
+.rule{height:1px;background:var(--line);margin:34px 0 8px}
+.body p{font-size:17.5px;line-height:1.72;margin:22px 0}
+.body strong{color:#fff;font-weight:600}
+.body em{color:var(--ink-soft)}
+.body a{color:var(--neon);text-decoration:none;border-bottom:1px solid #FF3DCB66;padding-bottom:1px}
+.body a:hover,.body a:focus-visible{background:#FF3DCB1A;outline:none}
+.fig{margin:34px 0}
+.fig img{width:100%;display:block;border:1px solid var(--line);filter:saturate(.82)}
+.foot{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
+@media (max-width:720px){.grid{grid-template-columns:1fr}.top{padding-top:44px}.page{padding:40px 20px 90px}}
+@media (prefers-reduced-motion:reduce){.plate,.shot{transition:none}.is-progress .dot{animation:none}}</style></head><body>
+<svg id="field" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+<script>
+(function(){var d="M20 20 H80 V80 H20 Z M20 40 H80 M20 60 H80 M40 20 V80 M60 20 V80 M20 20 h20 v20 h-20 Z";if(!d)return;
+var F=document.getElementById('field'),NS='http://www.w3.org/2000/svg';
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function anim(el,len,dur,delay){el.style.strokeDasharray=len;el.style.strokeDashoffset=len;
+ el.animate([{strokeDashoffset:len},{strokeDashoffset:0}],{duration:dur,delay:delay,easing:'ease-in-out',fill:'forwards'});}
+function sprout(stat){var s=0.10+Math.random()*0.09,x=Math.random()*1000,y=Math.random()*1000;
+ var g=document.createElementNS(NS,'g');
+ g.setAttribute('transform','translate('+x+' '+y+') scale('+s+') translate(-50 -50)');
+ var lead=document.createElementNS(NS,'path'),L=90+Math.random()*130;
+ lead.setAttribute('d',Math.random()>0.5?'M'+(-L)+' 50 H0':'M50 '+(-L)+' V0');
+ var sil=document.createElementNS(NS,'path');sil.setAttribute('d',d);
+ [lead,sil].forEach(function(el){el.setAttribute('fill','none');el.setAttribute('stroke','#FF3DCB');
+  el.setAttribute('stroke-width','2.2');el.setAttribute('vector-effect','non-scaling-stroke');
+  el.setAttribute('stroke-linecap','round');el.setAttribute('stroke-linejoin','round');});
+ lead.setAttribute('stroke','#38F0FF');lead.setAttribute('opacity','.5');
+ g.appendChild(lead);g.appendChild(sil);F.appendChild(g);
+ if(stat){g.setAttribute('opacity','.30');return;}
+ anim(lead,lead.getTotalLength(),900,0);anim(sil,sil.getTotalLength(),3400,760);
+ g.animate([{opacity:.42},{opacity:.42},{opacity:0}],{duration:5700,delay:3400,easing:'ease-out',fill:'forwards'})
+  .onfinish=function(){g.remove();};}
+if(reduce){for(var i=0;i<18;i++)sprout(true);return;}
+for(var i=0;i<8;i++)setTimeout(function(){sprout();},i*520);
+setInterval(function(){if(F.childElementCount<26)sprout();},520);})();
+</script>
+<div class="shell"><article class="page">
+<a class="back" href="../">&larr; Archive</a>
+<h1>Chess Board Coaster</h1>
+<p class="pill"><span class="dot"></span>complete</p>
+<div class="rule"></div>
+<div class="body"><p>A chess board, made as a coaster.</p>
+<figure class="fig"><img src="photos/5785F3A6-8EA4-4C52-A452-60E0BEC7D60F.jpg" alt="The finished coaster" loading="lazy"></figure>
+<p><em>(Needs writing from memory — one honest paragraph about making it.)</em></p></div>
+</article></div></body></html>
