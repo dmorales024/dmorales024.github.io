@@ -38,7 +38,9 @@ Rejected: corner brackets, glass panels.
 
 ## Backdrop — the motif field
 
-**This is the signature of the site.** Small silhouettes of the project's own item draw themselves across the background, continuously.
+> ⚠️ **DEFERRED — not in the shipped site as of 2026-08-29.** Stripped from all 18 pages at Dmitri's request: *"I'd rather ship something I like than have that little weird thing there."* The spec below stands as the design for when it returns — it needs a real motif per project before it's worth shipping, since three silhouettes across seventeen pages reads as an unfinished effect rather than a signature. Hover feedback on plates was kept; the pulsing status dot was also removed.
+
+**This is the signature of the site — when it comes back.** Small silhouettes of the project's own item draw themselves across the background, continuously.
 
 **Rules:**
 
