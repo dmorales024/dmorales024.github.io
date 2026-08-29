@@ -27,9 +27,9 @@ a{color:inherit}
 .status{margin:0;display:flex;align-items:center;gap:9px;font-family:var(--mono);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--ink-soft);flex:none}
 .is-progress .status{color:var(--alt)}
-.is-progress .dot{background:var(--alt);box-shadow:0 0 8px var(--alt);animation:pulse 1.9s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.32}}
-#field{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.is-progress .dot{background:var(--alt);box-shadow:0 0 8px var(--alt)}
+}
+
 .shell{position:relative;z-index:1}
 .page{max-width:660px;margin:0 auto;padding:56px 24px 120px}
 .back{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;margin-bottom:34px;border-bottom:1px solid transparent}
@@ -47,7 +47,7 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 .fig img{width:100%;display:block;border:1px solid var(--line);filter:saturate(.82)}
 .foot{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
 @media (max-width:720px){.grid{grid-template-columns:1fr}.top{padding-top:44px}.page{padding:40px 20px 90px}}
-@media (prefers-reduced-motion:reduce){.plate,.shot{transition:none}.is-progress .dot{animation:none}}</style></head><body>
+@media (prefers-reduced-motion:reduce){.plate,.shot{transition:none}}</style></head><body>
 <div class="wrap"><header class="top"><h1 class="mark">DMITRI MORALES</h1>
 <p class="sub">Archive &middot; 17 projects</p></header>
 <main class="grid">
