@@ -43,6 +43,7 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 .body a{color:var(--neon);text-decoration:none;border-bottom:1px solid #FF3DCB66;padding-bottom:1px}
 .body a:hover,.body a:focus-visible{background:#FF3DCB1A;outline:none}
 .fig{margin:34px 0}
+.fig figcaption{font-family:var(--mono,ui-monospace,monospace);font-size:11.5px;color:var(--ink-soft);margin-top:9px;letter-spacing:.02em;line-height:1.5}
 .fig img{width:100%;display:block;border:1px solid var(--line);filter:saturate(.82)}
 .foot{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
 @media (max-width:720px){.grid{grid-template-columns:1fr}.top{padding-top:44px}.page{padding:40px 20px 90px}}
@@ -56,7 +57,9 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 <div class="body"><p>We set out to read minds and settled for reading faces. The name of the project is the story of the project.</p>
 <p>The inspiration was a Michael Reeves video about driving a car with mind control. The plan was an EEG — electrodes on the scalp picking up alpha waves in the 8–12 Hz band, which get stronger when your eyes close and weaker when you concentrate. Detect the shift, decide whether someone is focused or relaxed.</p>
 <p>Alpha waves are very small and the scalp is very noisy. Reading them properly needs an EEG cap with electrodes positioned precisely, and we had neither the cap nor the components to compensate. Rather than pretend, we moved the electrodes and changed the question: instead of brain state, detect a blink — which is a muscle firing, and a far larger signal. The device became an EMG.</p>
+<figure class="fig"><img src="photos/IMG_5937.png" alt="The build on the bench during testing." loading="lazy"><figcaption>The build on the bench during testing.</figcaption></figure>
 <figure class="fig"><img src="photos/34ABB43E-3F8C-4977-8087-026A2E770EA5.jpg" alt="The circuit on the bench" loading="lazy"></figure>
+<figure class="fig"><img src="photos/IMG_5944.jpeg" alt="Electrodes above the eyebrow and on the cheekbone — the placement that finally worked." loading="lazy"><figcaption>Electrodes above the eyebrow and on the cheekbone — the placement that finally worked.</figcaption></figure>
 <p>The electronics were ours. Two instrumentation amplifiers to pull a differential signal off the body, a bandpass filter for the band we cared about, and a chain of notch filters to kill mains hum — which is the loudest thing in the room when you&#x27;re measuring microvolts. The Pi Pico&#x27;s ADC can&#x27;t accept a signal centred on zero, so a shifting amplifier lifts it to sit inside the input range. Then peak detection in software, and an LED that lights the instant you blink. Electrodes ended up above the eyebrow, on the cheekbone, and behind the ear as a reference.</p>
 <p>We took the wiring approach from a DIY guide but designed our own circuit and wrote our own acquisition and analysis code.</p>
 <p><strong>The lesson was about scoping rather than filters.</strong> We couldn&#x27;t get the signal we wanted, so we changed which signal we were after and kept every piece of engineering that still applied. The amplification, the filtering, the level shifting and the detection all survived the pivot intact. Only the target moved.</p></div>

@@ -43,6 +43,7 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 .body a{color:var(--neon);text-decoration:none;border-bottom:1px solid #FF3DCB66;padding-bottom:1px}
 .body a:hover,.body a:focus-visible{background:#FF3DCB1A;outline:none}
 .fig{margin:34px 0}
+.fig figcaption{font-family:var(--mono,ui-monospace,monospace);font-size:11.5px;color:var(--ink-soft);margin-top:9px;letter-spacing:.02em;line-height:1.5}
 .fig img{width:100%;display:block;border:1px solid var(--line);filter:saturate(.82)}
 .foot{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
 @media (max-width:720px){.grid{grid-template-columns:1fr}.top{padding-top:44px}.page{padding:40px 20px 90px}}
@@ -54,8 +55,13 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 <p class="pill"><span class="dot"></span>complete</p>
 <div class="rule"></div>
 <div class="body"><p>Embedded firmware for a pressure-sensing device, built on the nRF52833 with Zephyr — and the project where the toolchain stopped being an obstacle and started being a tool.</p>
+<figure class="fig"><img src="photos/IMG_7500.jpg" alt="The board." loading="lazy"><figcaption>The board.</figcaption></figure>
 <p>The device measures pressure and turns the raw sensor stream into something meaningful. Half the work was on the microcontroller: a devicetree overlay describing the hardware, a Zephyr configuration for the peripherals, and firmware structured around a state machine that&#x27;s documented as a diagram in the repo rather than living only in someone&#x27;s head.</p>
+<figure class="fig"><img src="photos/IMG_7246.jpg" alt="Bench setup — the nRF52833 development kit wired out to a breadboard." loading="lazy"><figcaption>Bench setup — the nRF52833 development kit wired out to a breadboard.</figcaption></figure>
 <p>The other half was in Jupyter. Sensor data does not arrive clean, and deciding what counts as signal is a judgment call you have to make with the actual numbers in front of you. The notebooks are where the processing was worked out — high-pass filtering the pressure trace, iterating on the outputs, checking whether the thing the firmware reported matched what the data actually said. Writing the analysis in a notebook first and only then committing it to C is a habit worth naming, because it is much cheaper to be wrong in Python.</p>
+<figure class="fig"><img src="photos/IMG_7499.jpg" alt="The device worn: a sash across the chest, module at the shoulder." loading="lazy"><figcaption>The device worn: a sash across the chest, module at the shoulder.</figcaption></figure>
 <p>Built with Jackie Herzberg, Kyle Duerr and Grant Breit.</p>
-<p>What carried forward from this project was not any particular line of code. It was the shape of the work — devicetree, Kconfig, a state machine, a data pipeline to check yourself against — which is the same shape everything embedded that came after it took.</p></div>
+<p>What carried forward from this project was not any particular line of code. It was the shape of the work — devicetree, Kconfig, a state machine, a data pipeline to check yourself against — which is the same shape everything embedded that came after it took.</p>
+<figure class="fig"><img src="photos/IMG_7928.jpg" alt="Worn, in the lab." loading="lazy"><figcaption>Worn, in the lab.</figcaption></figure>
+<p><em>(Still to write: the photographs show a wearable — a sash worn across the chest with the module at the shoulder. What was being measured there, and on whom?)</em></p></div>
 </article></div></body></html>
