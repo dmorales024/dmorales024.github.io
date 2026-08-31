@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Knock round trip: device notifies phone, phone acknowledges back">
+  <rect width="1200" height="800" fill="#08050C"/>
+  <g fill="none" stroke="#FF3DCB" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="90" y="270" width="330" height="260" rx="10"/>
+    <rect x="130" y="310" width="120" height="70" rx="5"/>
+    <circle cx="345" cy="345" r="26"/>
+    <circle cx="150" cy="470" r="11"/><circle cx="196" cy="470" r="11"/>
+    <circle cx="242" cy="470" r="11"/><circle cx="288" cy="470" r="11"/>
+    <rect x="790" y="230" width="290" height="340" rx="30"/>
+    <rect x="820" y="285" width="230" height="230" rx="6"/>
+    <path d="M905 545 h60"/>
+  </g>
+  <g fill="none" stroke="#FF3DCB" stroke-width="3" stroke-linecap="round">
+    <path d="M440 350 H745"/>
+    <path d="M745 350 l-24 -13 M745 350 l-24 13"/>
+  </g>
+  <g fill="none" stroke="#38F0FF" stroke-width="3" stroke-linecap="round">
+    <path d="M745 470 H440"/>
+    <path d="M440 470 l24 -13 M440 470 l24 13"/>
+  </g>
+  <g fill="none" stroke="#38F0FF" stroke-width="2.5" opacity=".85">
+    <path d="M1075 340 q28 60 0 120"/>
+    <path d="M1108 315 q46 85 0 170"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" letter-spacing="3">
+    <text x="592" y="326" fill="#FF3DCB" text-anchor="middle">KNOCK</text>
+    <text x="592" y="512" fill="#38F0FF" text-anchor="middle">ACK</text>
+    <text x="255" y="600" fill="#7C93A3" font-size="22" text-anchor="middle">nRF52833</text>
+    <text x="935" y="640" fill="#7C93A3" font-size="22" text-anchor="middle">iPhone</text>
+  </g>
+</svg>
