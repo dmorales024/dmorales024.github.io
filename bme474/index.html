@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>bme474 — Dmitri Morales</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>:root{--neon:#FF3DCB;--alt:#38F0FF;--ground:#08050C;--panel:#100A16;--line:#FF3DCB33;
+<title>Wearable BP Cuff During Exercise — Dmitri Morales</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>:root{--neon:#FF3DCB;--alt:#38F0FF;--ground:#08050C;--panel:#100A16;--line:#FF3DCB33;
 --ink:#DDEAF2;--ink-soft:#7C93A3;--ew:2px;
 --display:'Orbitron',"Trebuchet MS",sans-serif;--body:'Rajdhani',"Avenir Next",system-ui,sans-serif;
 --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace}
@@ -51,17 +51,17 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 
 <div class="shell"><article class="page">
 <a class="back" href="../">&larr; Archive</a>
-<h1>bme474</h1>
+<h1>Wearable BP Cuff During Exercise</h1>
 <p class="pill"><span class="dot"></span>complete</p>
 <div class="rule"></div>
-<div class="body"><p>Embedded firmware for a pressure-sensing device, built on the nRF52833 with Zephyr — and the project where the toolchain stopped being an obstacle and started being a tool.</p>
+<div class="body"><p>A blood pressure cuff you can wear through a workout, which takes its own reading when it notices your arm has gone still.</p>
+<p>Blood pressure during exercise is a real blind spot. People experience hypertensive and hypotensive episodes mid-workout, and there is no good way to catch it — current equipment needs you sitting quietly in a clinic, which is precisely the state you are not in when the interesting thing happens.</p>
 <figure class="fig"><img src="photos/IMG_7500.jpg" alt="The board." loading="lazy"><figcaption>The board.</figcaption></figure>
-<p>The device measures pressure and turns the raw sensor stream into something meaningful. Half the work was on the microcontroller: a devicetree overlay describing the hardware, a Zephyr configuration for the peripherals, and firmware structured around a state machine that&#x27;s documented as a diagram in the repo rather than living only in someone&#x27;s head.</p>
-<figure class="fig"><img src="photos/IMG_7246.jpg" alt="Bench setup — the nRF52833 development kit wired out to a breadboard." loading="lazy"><figcaption>Bench setup — the nRF52833 development kit wired out to a breadboard.</figcaption></figure>
-<p>The other half was in Jupyter. Sensor data does not arrive clean, and deciding what counts as signal is a judgment call you have to make with the actual numbers in front of you. The notebooks are where the processing was worked out — high-pass filtering the pressure trace, iterating on the outputs, checking whether the thing the firmware reported matched what the data actually said. Writing the analysis in a notebook first and only then committing it to C is a habit worth naming, because it is much cheaper to be wrong in Python.</p>
-<figure class="fig"><img src="photos/IMG_7499.jpg" alt="The device worn: a sash across the chest, module at the shoulder." loading="lazy"><figcaption>The device worn: a sash across the chest, module at the shoulder.</figcaption></figure>
-<p>Built with Jackie Herzberg, Kyle Duerr and Grant Breit.</p>
-<p>What carried forward from this project was not any particular line of code. It was the shape of the work — devicetree, Kconfig, a state machine, a data pipeline to check yourself against — which is the same shape everything embedded that came after it took.</p>
-<figure class="fig"><img src="photos/IMG_7928.jpg" alt="Worn, in the lab." loading="lazy"><figcaption>Worn, in the lab.</figcaption></figure>
-<p><em>(Still to write: the photographs show a wearable — a sash worn across the chest with the module at the shoulder. What was being measured there, and on whom?)</em></p></div>
+<p>So the device waits for its moment. You work out; you stop for a few seconds; the Nordic Thingy on the strap reads its accelerometer and decides your arm is at rest. That is the cue. It drives the valve, inflates the cuff, takes the measurement, and sends it over Bluetooth to a phone app — no button, no interruption, nothing for the wearer to remember to do.</p>
+<figure class="fig"><img src="photos/IMG_7246.jpg" alt="Bench setup — the development kit wired out to a breadboard." loading="lazy"><figcaption>Bench setup — the development kit wired out to a breadboard.</figcaption></figure>
+<p>Detecting rest is the whole trick. A cuff that inflates while your arm is swinging gives you a number that means nothing, so the accelerometer is not a convenience feature — it is what makes the reading trustworthy.</p>
+<figure class="fig"><img src="photos/IMG_7499.jpg" alt="Worn: sash across the chest, module at the shoulder, cuff on the upper arm." loading="lazy"><figcaption>Worn: sash across the chest, module at the shoulder, cuff on the upper arm.</figcaption></figure>
+<figure class="fig"><img src="photos/IMG_7928.jpg" alt="The wearable, on a person, in the lab." loading="lazy"><figcaption>The wearable, on a person, in the lab.</figcaption></figure>
+<p>I designed the PCB and wrote most of the firmware — bringing up the valve, the pressure sensor and the Bluetooth connection, on the nRF52833 with Zephyr. There is a KiCad project alongside the firmware for the board itself.</p>
+<p>Built with Jackie Herzberg, Kyle Duerr and Grant Breit.</p></div>
 </article></div></body></html>
