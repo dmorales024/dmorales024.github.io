@@ -76,3 +76,12 @@ Dmitri's call. This retires the **grouped-area tier** entirely, since the Flutte
 **`doodlejump` cut too** (2026-08-31). Its repo is a Godot project file, one empty `Node2D`, zero scripts, and the previous project's assets copied across — created and abandoned the same day as `adventureGame`. No image could exist for it, so #2's *no photo → no card* rule already covered the case. Reinstate if it is ever actually built.
 
 **Card count: 17 → 12.**
+
+
+## Mondo's removed — 2026-08-31
+
+Cut at Dmitri's request. It was the only client work in the archive and the only in-progress card carrying a long engineering write-up; the page had already been reduced to a three-line note before removal.
+
+**Card count: 17 → 9.**
+
+The animated neon card went with it, which also **retires the grid-animation exception** — `docs/visual-direction.md`'s rule that the grid page carries no animation is once again true without qualification.

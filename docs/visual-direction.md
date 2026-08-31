@@ -44,7 +44,7 @@ Rejected: corner brackets, glass panels.
 
 **Rules:**
 
-1. **Detail pages only.** The **grid page has no animation at all** — no motif, no canvas, nothing. Verified in the prototype: grid renders 0 silhouettes.
+1. **Detail pages only.** The **grid page has no animation at all** — briefly excepted for an animated Mondo's neon card (2026-08-31), removed the same day with the card — no motif, no canvas, nothing. Verified in the prototype: grid renders 0 silhouettes.
 2. **One item per page.** A project's detail page draws **only its own** motif — Rotom's page draws Rotoms. Never a mixture.
 3. **Continuous.** It does not end, does not depend on scroll position, and has no completion state. Runs the whole time the reader is on the page.
 4. **Drawn, never faded in.** Each instance animates `stroke-dashoffset` from full length to zero — an orthogonal **lead routes in first**, then the silhouette draws from it, so it reads as a trace arriving at a footprint.
