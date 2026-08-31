@@ -49,42 +49,9 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 @media (max-width:720px){.grid{grid-template-columns:1fr}.top{padding-top:44px}.page{padding:40px 20px 90px}}
 @media (prefers-reduced-motion:reduce){.plate,.shot{transition:none}}
 
-/* Mondo's neon — technique, palette and timings taken from the real
-   NeonSign.module.css in dmorales024/mondos. Hollow tube is a WHITE stroke
-   with transparent fill; the pink (#ff1f5a, sampled from the logo) lives in
-   the glow. Glow sits on the container, never on the fine detail. Opacity is
-   animated, never box-shadow. A dead tube is 0.09, not 0 — cold glass still
-   catches light. */
-.neon{display:grid;place-items:center;width:100%;height:100%;background:#07070a}
-.neon .lock{display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  animation:mondos-stutter 2.3s steps(1,end) 1}
-.neon .rule{height:5px;width:min(64%,230px);border-radius:99px;background:#fff;
-  filter:drop-shadow(0 0 4px #fff) drop-shadow(0 0 12px #ff1f5a)
-         drop-shadow(0 0 26px rgba(255,31,90,.6))}
-.neon .sign{display:flex;margin:0;
-  font-family:"Arial Narrow","Helvetica Neue",Impact,sans-serif;font-weight:700;
-  font-size:clamp(30px,6.6vw,72px);line-height:.92;letter-spacing:.02em;
-  filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 9px #ff1f5a)
-         drop-shadow(0 0 24px rgba(255,31,90,.7))}
-.neon .ch{color:transparent;-webkit-text-stroke:2px #fff;display:inline-block}
-/* only letters may fail alone; the apostrophe goes dark with the whole sign */
-.neon .ch.tube{animation:mondos-dead 9s steps(1,end) infinite}
-.neon .ch.tube:nth-of-type(1){animation-duration:8.1s;animation-delay:-2.3s}
-.neon .ch.tube:nth-of-type(2){animation-duration:11.4s;animation-delay:-6.1s}
-.neon .ch.tube:nth-of-type(3){animation-duration:9.6s;animation-delay:-0.9s}
-.neon .ch.tube:nth-of-type(4){animation-duration:13.2s;animation-delay:-8.4s}
-.neon .ch.tube:nth-of-type(5){animation-duration:10.3s;animation-delay:-4.7s}
-.neon .ch.tube:nth-of-type(7){animation-duration:12.1s;animation-delay:-10.2s}
-@keyframes mondos-stutter{0%,8%{opacity:.06}10%{opacity:1}12%{opacity:.08}
-  16%{opacity:1}19%{opacity:.1}21%{opacity:.95}27%{opacity:.12}30%{opacity:1}
-  36%{opacity:.35}38%,100%{opacity:1}}
-@keyframes mondos-dead{0%,90%,100%{opacity:1}91%{opacity:.09}93%{opacity:1}
-  94%{opacity:.09}96%{opacity:1}}
-@media (prefers-reduced-motion:reduce){
-  .neon .lock,.neon .ch.tube{animation:none}}
 </style></head><body>
 <div class="wrap"><header class="top"><h1 class="mark">DMITRI MORALES</h1>
-<p class="sub">Archive &middot; 10 projects</p></header>
+<p class="sub">Archive &middot; 9 projects</p></header>
 <main class="grid">
 <a class="plate" href="thors-hammer-pcb/">
 <div class="frame"><img class="shot" src="thors-hammer-pcb/photos/06-img_6355.jpg" alt="Thor's Hammer PCB" loading="lazy"></div>
@@ -114,10 +81,6 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 <div class="frame"><img class="shot" src="bother-dmitri/photos/01-knock-roundtrip.svg" alt="Knock round trip diagram" loading="lazy"></div>
 <div class="meta"><h2 class="name">botherDmitri</h2>
 <p class="status"><span class="dot" aria-hidden="true"></span>complete</p></div></a>
-<a class="plate is-progress" href="mondos/">
-<div class="frame"><div class="neon" role="img" aria-label="Mondo&rsquo;s neon sign"><div class="lock"><span class="rule"></span><p class="sign"><span class="ch tube">M</span><span class="ch tube">o</span><span class="ch tube">n</span><span class="ch tube">d</span><span class="ch tube">o</span><span class="ch">&rsquo;</span><span class="ch tube">s</span></p></div></div>
-<div class="meta"><h2 class="name">Mondo&#x27;s</h2>
-<p class="status"><span class="dot" aria-hidden="true"></span>in progress</p></div></a>
 <a class="plate" href="chess-board-coaster/">
 <div class="frame"><img class="shot" src="chess-board-coaster/photos/5785F3A6-8EA4-4C52-A452-60E0BEC7D60F.jpg" alt="Chess Board Coaster" loading="lazy"></div>
 <div class="meta"><h2 class="name">Chess Board Coaster</h2>
