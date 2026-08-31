@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>first-godot-game — Dmitri Morales</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>:root{--neon:#FF3DCB;--alt:#38F0FF;--ground:#08050C;--panel:#100A16;--line:#FF3DCB33;
+<title>Millionaire Club Frame — Dmitri Morales</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>:root{--neon:#FF3DCB;--alt:#38F0FF;--ground:#08050C;--panel:#100A16;--line:#FF3DCB33;
 --ink:#DDEAF2;--ink-soft:#7C93A3;--ew:2px;
 --display:'Orbitron',"Trebuchet MS",sans-serif;--body:'Rajdhani',"Avenir Next",system-ui,sans-serif;
 --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace}
@@ -43,6 +43,7 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 .body a{color:var(--neon);text-decoration:none;border-bottom:1px solid #FF3DCB66;padding-bottom:1px}
 .body a:hover,.body a:focus-visible{background:#FF3DCB1A;outline:none}
 .fig{margin:34px 0}
+.fig figcaption{font-family:var(--mono,ui-monospace,monospace);font-size:11.5px;color:var(--ink-soft);margin-top:9px;letter-spacing:.02em;line-height:1.5}
 .fig img{width:100%;display:block;border:1px solid var(--line);filter:saturate(.82)}
 .foot{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
 @media (max-width:720px){.grid{grid-template-columns:1fr}.top{padding-top:44px}.page{padding:40px 20px 90px}}
@@ -50,12 +51,14 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 
 <div class="shell"><article class="page">
 <a class="back" href="../">&larr; Archive</a>
-<h1>first-godot-game</h1>
+<h1>Millionaire Club Frame</h1>
 <p class="pill"><span class="dot"></span>complete</p>
 <div class="rule"></div>
-<div class="body"><p>The first thing I made in a game engine: dodge the mobs, survive, watch the score climb.</p>
-<p>A player you steer around the screen, enemies that spawn off the edges and drift across, a collision that ends the run, and a HUD keeping score and putting the start message up between attempts. That&#x27;s the whole game, and being the whole game is the point — it&#x27;s small enough that every piece is visible at once.</p>
-<p>What it taught was the engine&#x27;s model rather than anything about games. Godot organises everything as scenes made of nodes, where a scene can be a whole level or a single reusable object, and instancing one inside another is how you compose a game. The player is a scene. A mob is a scene. The main level is a scene that spawns the others. Once that clicked — that there&#x27;s no distinction between &quot;a level&quot; and &quot;an object&quot;, only nodes and the trees you assemble them into — the rest of the engine stopped feeling arbitrary.</p>
-<p>Signals were the other idea worth carrying away: nodes announce that something happened and don&#x27;t care who&#x27;s listening. The player says it was hit; the main scene decides that means the game is over. That&#x27;s a habit that transfers well beyond a game engine, and it&#x27;s most of why the platformer that came after this one was straightforward to put together.</p>
-<p><a href="https://github.com/dmorales024/first-godot-game" rel="noopener">The project is here</a>.</p></div>
+<div class="body"><p>A picture frame for the Millionaire Club, 2025.</p>
+<figure class="fig"><img src="photos/01-frame-on-shelf.jpg" alt="On the shelf. Photo panel, shaka on the corner, name across the base." loading="lazy"><figcaption>On the shelf. Photo panel, shaka on the corner, name across the base.</figcaption></figure>
+<p>The frame is three pieces that hold a clear panel of photographs. A printed base spells out <em>MILLIONAIRE CLUB 2025</em> in dripping letters, wide enough to stand the whole thing up on its own. A shaka hangs off the top corner, drawn as an open lattice rather than a solid hand so it reads as line work instead of a lump of plastic. And the panel itself carries etched outlines over the photographs, so the artwork sits in front of the images without hiding them.</p>
+<figure class="fig"><img src="photos/02-cad-hand-and-lettering.png" alt="The two printed parts in CAD — the webbed shaka and the lettered base." loading="lazy"><figcaption>The two printed parts in CAD — the webbed shaka and the lettered base.</figcaption></figure>
+<p>Almost all the work is in the lettering. Drippy display type is fun to draw and awkward to manufacture: every letter has to stay connected to the base bar, the enclosed counters in the <em>O</em>s and the <em>B</em> have to survive as holes rather than falling out, and the drips need enough thickness at their thinnest point to not snap when handled. The shaka has the same problem in a different shape — an open web of strands is easy to draw and easy to break.</p>
+<p>You can <a href="https://cad.onshape.com/documents/4b8fcc9ed208c31eda2b2110/w/585804d58e34d6798484d139/e/b00e2babd156922bc80d8bab">open the CAD on Onshape</a> and pull the parts apart.</p>
+<p><em>(Still to write, in my own words: what the Millionaire Club is and who it is for, what the frame was made for, what it is printed in, and how the etched panel was actually made.)</em></p></div>
 </article></div></body></html>

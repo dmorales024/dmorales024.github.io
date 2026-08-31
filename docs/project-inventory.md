@@ -53,3 +53,24 @@ Disney (`wai`, People Counter, Signal4, Figaro, MagicMobile) · GFC ops platform
 - **Weight structure (3 levels):** ~~lead tier (4) · standard card · grouped area~~ — **RETIRED by #7 (2026-08-23).** Study D uses uniform plates; every card is the same size. `rank` is position only. The lead four still lead, but by *order*, not by size. The Flutter group is an ordinary plate.
 - **FTC Vanta 31000 is a project card,** not an about-page or leadership surface. Resolves sub-question 3.
 - **`first-react-app` and `starter-git` are OUT** (2026-08-20).
+
+
+---
+
+## Cut list revised — 2026-08-31
+
+**Removed from the archive** (pages and grid plates deleted):
+
+- `adventureGame` — Godot platformer
+- `first-godot-game`
+- `Learning Flutter, 2022` (the seven-repo grouped card)
+- `workday-autofill`
+- `workflow-tracker`
+
+Dmitri's call. This retires the **grouped-area tier** entirely, since the Flutter card was its only member — the placement rule from #2 (followed instructions → group; chose what to build → own card) no longer has anything to apply to.
+
+**Added:** **Millionaire Club Frame** — 3D-printed picture frame, 2025. Printed lettered base, webbed shaka, etched photo panel. CAD on Onshape. Intake tracked in #29.
+
+**Card count: 17 → 13.**
+
+Still carrying `doodlejump`, whose repo is an empty scene — flagged for removal, not yet decided.
