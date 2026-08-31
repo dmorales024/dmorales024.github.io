@@ -73,4 +73,6 @@ Dmitri's call. This retires the **grouped-area tier** entirely, since the Flutte
 
 **Card count: 17 → 13.**
 
-Still carrying `doodlejump`, whose repo is an empty scene — flagged for removal, not yet decided.
+**`doodlejump` cut too** (2026-08-31). Its repo is a Godot project file, one empty `Node2D`, zero scripts, and the previous project's assets copied across — created and abandoned the same day as `adventureGame`. No image could exist for it, so #2's *no photo → no card* rule already covered the case. Reinstate if it is ever actually built.
+
+**Card count: 17 → 12.**
