@@ -1,70 +1,420 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Thor&#x27;s Hammer PCB — Dmitri Morales</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>:root{--neon:#FF3DCB;--alt:#38F0FF;--ground:#08050C;--panel:#100A16;--line:#FF3DCB33;
---ink:#DDEAF2;--ink-soft:#7C93A3;--ew:2px;
---display:'Orbitron',"Trebuchet MS",sans-serif;--body:'Rajdhani',"Avenir Next",system-ui,sans-serif;
---mono:'IBM Plex Mono',ui-monospace,Menlo,monospace}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
-a{color:inherit}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px 96px}
-.top{padding:64px 0 34px;border-bottom:1px solid var(--line)}
-.mark{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.4vw,42px);letter-spacing:.06em;margin:0;color:var(--neon);text-wrap:balance}
-.sub{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.22em;color:var(--ink-soft);margin:14px 0 0}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding-top:34px}
-.plate{display:flex;flex-direction:column;text-decoration:none;background:var(--panel);border:var(--ew) solid var(--line);transition:border-color .22s,box-shadow .22s,transform .22s}
-.frame{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0B0710}
-.shot{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.72);transition:filter .3s,transform .35s}
-.plate:hover,.plate:focus-visible{border-color:var(--neon);box-shadow:0 0 34px -6px var(--neon),inset 0 0 22px -14px var(--neon);transform:translateY(-3px);outline:none}
-.plate:hover .shot,.plate:focus-visible .shot{filter:saturate(1);transform:scale(1.035)}
-.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:repeating-linear-gradient(135deg,#0B0710 0 11px,#0D0813 11px 22px)}
-.empty-mark{width:34px;height:34px;border:1px solid var(--line);transform:rotate(45deg)}
-.empty-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.24em;color:var(--ink-soft)}
-.meta{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px}
-.name{font-family:var(--display);font-weight:500;font-size:clamp(15px,1.5vw,19px);letter-spacing:.03em;margin:0;color:var(--ink);text-wrap:balance}
-.status{margin:0;display:flex;align-items:center;gap:9px;font-family:var(--mono);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--ink-soft);flex:none}
-.is-progress .status{color:var(--alt)}
-.is-progress .dot{background:var(--alt);box-shadow:0 0 8px var(--alt)}
-}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Thor&#x27;s Hammer PCB — Dmitri Morales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      :root {
+        --neon: #ff3dcb;
+        --alt: #38f0ff;
+        --ground: #08050c;
+        --panel: #100a16;
+        --line: #ff3dcb33;
+        --ink: #ddeaf2;
+        --ink-soft: #7c93a3;
+        --ew: 2px;
+        --display: "Orbitron", "Trebuchet MS", sans-serif;
+        --body: "Rajdhani", "Avenir Next", system-ui, sans-serif;
+        --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--ground);
+        color: var(--ink);
+        font-family: var(--body);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 24px 96px;
+      }
+      .top {
+        padding: 64px 0 34px;
+        border-bottom: 1px solid var(--line);
+      }
+      .mark {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(26px, 4.4vw, 42px);
+        letter-spacing: 0.06em;
+        margin: 0;
+        color: var(--neon);
+        text-wrap: balance;
+      }
+      .sub {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--ink-soft);
+        margin: 14px 0 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+        padding-top: 34px;
+      }
+      .plate {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        background: var(--panel);
+        border: var(--ew) solid var(--line);
+        transition:
+          border-color 0.22s,
+          box-shadow 0.22s,
+          transform 0.22s;
+      }
+      .frame {
+        position: relative;
+        aspect-ratio: 16/10;
+        overflow: hidden;
+        background: #0b0710;
+      }
+      .shot {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.72);
+        transition:
+          filter 0.3s,
+          transform 0.35s;
+      }
+      .plate:hover,
+      .plate:focus-visible {
+        border-color: var(--neon);
+        box-shadow:
+          0 0 34px -6px var(--neon),
+          inset 0 0 22px -14px var(--neon);
+        transform: translateY(-3px);
+        outline: none;
+      }
+      .plate:hover .shot,
+      .plate:focus-visible .shot {
+        filter: saturate(1);
+        transform: scale(1.035);
+      }
+      .empty {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        background: repeating-linear-gradient(
+          135deg,
+          #0b0710 0 11px,
+          #0d0813 11px 22px
+        );
+      }
+      .empty-mark {
+        width: 34px;
+        height: 34px;
+        border: 1px solid var(--line);
+        transform: rotate(45deg);
+      }
+      .empty-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: var(--ink-soft);
+      }
+      .meta {
+        padding: 20px 22px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .name {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: clamp(15px, 1.5vw, 19px);
+        letter-spacing: 0.03em;
+        margin: 0;
+        color: var(--ink);
+        text-wrap: balance;
+      }
+      .status {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--mono);
+        font-weight: 500;
+        font-size: 10.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--ink-soft);
+        flex: none;
+      }
+      .is-progress .status {
+        color: var(--alt);
+      }
+      .is-progress .dot {
+        background: var(--alt);
+        box-shadow: 0 0 8px var(--alt);
+      }
 
-.shell{position:relative;z-index:1}
-.page{max-width:660px;margin:0 auto;padding:56px 24px 120px}
-.back{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;margin-bottom:34px;border-bottom:1px solid transparent}
-.back:hover,.back:focus-visible{color:var(--neon);border-bottom-color:var(--neon);outline:none}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);letter-spacing:.04em;color:var(--neon);margin:0;text-wrap:balance;line-height:1.14}
-.pill{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-family:var(--mono);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft);border:1px solid var(--line);padding:6px 13px}
-.pill.prog{color:var(--alt);border-color:#38F0FF44}
-.rule{height:1px;background:var(--line);margin:34px 0 8px}
-.body p{font-size:17.5px;line-height:1.72;margin:22px 0}
-.body strong{color:#fff;font-weight:600}
-.body em{color:var(--ink-soft)}
-.body a{color:var(--neon);text-decoration:none;border-bottom:1px solid #FF3DCB66;padding-bottom:1px}
-.body a:hover,.body a:focus-visible{background:#FF3DCB1A;outline:none}
-.fig{margin:34px 0}
-.fig figcaption{font-family:var(--mono,ui-monospace,monospace);font-size:11.5px;color:var(--ink-soft);margin-top:9px;letter-spacing:.02em;line-height:1.5}
-.fig img{width:100%;display:block;border:1px solid var(--line);filter:saturate(.82)}
-.foot{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
-@media (max-width:720px){.grid{grid-template-columns:1fr}.top{padding-top:44px}.page{padding:40px 20px 90px}}
-@media (prefers-reduced-motion:reduce){.plate,.shot{transition:none}}</style></head><body>
-
-<div class="shell"><article class="page">
-<a class="back" href="../">&larr; Archive</a>
-<h1>Thor&#x27;s Hammer PCB</h1>
-<p class="pill"><span class="dot"></span>complete</p>
-<div class="rule"></div>
-<div class="body"><p>My first PCB, and the enclosure I built to give it somewhere to live: Mjolnir.</p>
-<p>This was BME290, an introduction to medical devices, and the half of it I remember is the hands-on half — CAD and ECAD, ending in a board of your own design and a box to put it in.</p>
-<p>The circuit is a timer. Press the button and the lights blink out of phase with each other for somewhere between 500 and 1000 milliseconds, depending on where the potentiometer is set. Simple enough to hold in your head, which is what makes it a reasonable first board.</p>
-<figure class="fig"><img src="photos/01-img_6062.jpg" alt="The layout in KiCad — pads, traces and mounting holes, before any copper existed." loading="lazy"><figcaption>The layout in KiCad — pads, traces and mounting holes, before any copper existed.</figcaption></figure>
-<p>We designed the circuit and then built the entire board file in KiCad. I went one-sided, which makes routing harder and the result cheaper, and the layout turned out to be the part I enjoyed most. I like Tetris and I like Flow, and a single-layer board is the same game: everything has to fit, nothing may cross, and there is a solution in there somewhere if you are willing to move the pieces around enough times.</p>
-<figure class="fig"><img src="photos/02-img_6145.jpg" alt="The populated board. Three DIPs, electrolytics, film caps — and drm66 in the silkscreen." loading="lazy"><figcaption>The populated board. Three DIPs, electrolytics, film caps — and <code>drm66</code> in the silkscreen.</figcaption></figure>
-<figure class="fig"><img src="photos/05-img_6347.jpg" alt="The solder side: the routing as it actually came out, joint by joint." loading="lazy"><figcaption>The solder side: the routing as it actually came out, joint by joint.</figcaption></figure>
-<figure class="fig"><img src="photos/03-img_6341.jpg" alt="The one-shot firing on the scope. This is the circuit doing exactly what it was drawn to do." loading="lazy"><figcaption>The one-shot firing on the scope. This is the circuit doing exactly what it was drawn to do.</figcaption></figure>
-<p>The enclosure brief was open — build whatever you like, as long as it holds the battery pack. I built Thor's hammer, partly because it would use every skill the class had covered and partly because the side panels gave me a reason to learn freeform sketching for the engraved artwork.</p>
-<figure class="fig"><img src="photos/07-cad-exploded.png" alt="The assembly, exploded: board inside the head, engraved side plates, wrapped handle." loading="lazy"><figcaption>The assembly, exploded: board inside the head, engraved side plates, wrapped handle.</figcaption></figure>
-<figure class="fig"><img src="photos/06-img_6355.jpg" alt="658.0&nbsp;g of Mjolnir." loading="lazy"><figcaption>658.0&nbsp;g of Mjolnir.</figcaption></figure>
-<p>The board goes inside the head. The handle wraps in alternating bands, and the faces of the hammer carry the sketched artwork — the part of the project with no engineering justification whatsoever, which is why it is the part I would defend hardest.</p>
-<p>I would not claim a grand lesson from this. What actually happened is that I stopped being nervous about KiCad, and these days I review other people's boards at the makerspace before they send them out for fabrication. <a href="https://cad.onshape.com/documents/171cfdadf8c08d679551e05d/w/37c81c1d0b62217d37c474de/e/9c35b3d0ba18eead50d66f42">The CAD is on Onshape</a> if you want to pull the assembly apart yourself, and the gerbers, BOM and DRC report are all in the repo.</p></div>
-</article></div></body></html>
+      .shell {
+        position: relative;
+        z-index: 1;
+      }
+      .page {
+        max-width: 660px;
+        margin: 0 auto;
+        padding: 56px 24px 120px;
+      }
+      .back {
+        display: inline-block;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        text-decoration: none;
+        margin-bottom: 34px;
+        border-bottom: 1px solid transparent;
+      }
+      .back:hover,
+      .back:focus-visible {
+        color: var(--neon);
+        border-bottom-color: var(--neon);
+        outline: none;
+      }
+      h1 {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(28px, 5vw, 44px);
+        letter-spacing: 0.04em;
+        color: var(--neon);
+        margin: 0;
+        text-wrap: balance;
+        line-height: 1.14;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 22px;
+        font-family: var(--mono);
+        font-weight: 500;
+        font-size: 10.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+        border: 1px solid var(--line);
+        padding: 6px 13px;
+      }
+      .pill.prog {
+        color: var(--alt);
+        border-color: #38f0ff44;
+      }
+      .rule {
+        height: 1px;
+        background: var(--line);
+        margin: 34px 0 8px;
+      }
+      .body p {
+        font-size: 17.5px;
+        line-height: 1.72;
+        margin: 22px 0;
+      }
+      .body strong {
+        color: #fff;
+        font-weight: 600;
+      }
+      .body em {
+        color: var(--ink-soft);
+      }
+      .body a {
+        color: var(--neon);
+        text-decoration: none;
+        border-bottom: 1px solid #ff3dcb66;
+        padding-bottom: 1px;
+      }
+      .body a:hover,
+      .body a:focus-visible {
+        background: #ff3dcb1a;
+        outline: none;
+      }
+      .fig {
+        margin: 34px 0;
+      }
+      .fig figcaption {
+        font-family: var(--mono, ui-monospace, monospace);
+        font-size: 11.5px;
+        color: var(--ink-soft);
+        margin-top: 9px;
+        letter-spacing: 0.02em;
+        line-height: 1.5;
+      }
+      .fig img {
+        width: 100%;
+        display: block;
+        border: 1px solid var(--line);
+        filter: saturate(0.82);
+      }
+      .foot {
+        margin-top: 54px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        font-family: var(--mono);
+        font-size: 10.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+      }
+      @media (max-width: 720px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .top {
+          padding-top: 44px;
+        }
+        .page {
+          padding: 40px 20px 90px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .plate,
+        .shot {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <article class="page">
+        <a class="back" href="../">&larr; Archive</a>
+        <h1>Thor&#x27;s Hammer PCB</h1>
+        <p class="pill"><span class="dot"></span>complete</p>
+        <div class="rule"></div>
+        <div class="body">
+          <p>
+            My first PCB, and the enclosure I built to give it somewhere to
+            live: Mjolnir.
+          </p>
+          <p>
+            The circuit is a timer. Press the button and the lights blink
+            asynchronously between 500 and 1000 milliseconds, depending on where
+            the potentiometer is set.
+          </p>
+          <figure class="fig">
+            <img
+              src="photos/01-img_6062.jpg"
+              alt="The layout in KiCad — pads, traces and mounting holes, before any copper existed."
+              loading="lazy"
+            />
+            <figcaption>
+              The layout in KiCad — pads, traces and mounting holes, before any
+              copper existed.
+            </figcaption>
+          </figure>
+          <p>
+            I designed the circuit and then built the entire board file in
+            KiCad. I went one-sided (since my professor said that it would be
+            more of a challenge), which makes routing harder and the result
+            cheaper, and the layout turned out to be the part I enjoyed most. I
+            like Tetris, and PCB design felt like a huge game of Tetris.
+          </p>
+          <figure class="fig">
+            <img
+              src="photos/02-img_6145.jpg"
+              alt="The populated board. Three DIPs, electrolytics, film caps — and drm66 in the silkscreen."
+              loading="lazy"
+            />
+            <figcaption>The populated board.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img
+              src="photos/05-img_6347.jpg"
+              alt="The solder side: the routing as it actually came out, joint by joint."
+              loading="lazy"
+            />
+            <figcaption>
+              The solder side: the routing as it actually came out, joint by
+              joint.
+            </figcaption>
+          </figure>
+          <figure class="fig">
+            <img
+              src="photos/03-img_6341.jpg"
+              alt="The one-shot firing on the scope. This is the circuit doing exactly what it was drawn to do."
+              loading="lazy"
+            />
+            <figcaption>
+              The one-shot firing on the scope. This is the circuit doing
+              exactly what it was drawn to do.
+            </figcaption>
+          </figure>
+          <p>
+            The design for the enclosure was anything we imagined, so I wanted
+            to test my Onshape skills by creating something that would leverage
+            all of the things we learned in the class.
+          </p>
+          <figure class="fig">
+            <img
+              src="photos/07-cad-exploded.png"
+              alt="The assembly, exploded: board inside the head, engraved side plates, wrapped handle."
+              loading="lazy"
+            />
+            <figcaption>
+              The assembly, exploded: board inside the head, engraved side
+              plates, wrapped handle.
+            </figcaption>
+          </figure>
+          <figure class="fig">
+            <img
+              src="photos/06-img_6355.jpg"
+              alt="658.0&nbsp;g of Mjolnir."
+              loading="lazy"
+            />
+            <figcaption>658.0&nbsp;g of Mjolnir.</figcaption>
+          </figure>
+          <p>
+            I would not claim a grand lesson from this. What actually happened
+            is that I stopped being nervous about KiCad, and these days I review
+            other people's boards at the makerspace before they send them out
+            for fabrication.
+            <a
+              href="https://cad.onshape.com/documents/171cfdadf8c08d679551e05d/w/37c81c1d0b62217d37c474de/e/9c35b3d0ba18eead50d66f42"
+              >The CAD is on Onshape</a
+            >
+            if you want to pull the assembly apart yourself, and the gerbers,
+            BOM and DRC report are all in the repo.
+          </p>
+        </div>
+      </article>
+    </div>
+  </body>
+</html>

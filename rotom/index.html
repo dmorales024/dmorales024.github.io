@@ -1,65 +1,403 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rotom — Dmitri Morales</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>:root{--neon:#FF3DCB;--alt:#38F0FF;--ground:#08050C;--panel:#100A16;--line:#FF3DCB33;
---ink:#DDEAF2;--ink-soft:#7C93A3;--ew:2px;
---display:'Orbitron',"Trebuchet MS",sans-serif;--body:'Rajdhani',"Avenir Next",system-ui,sans-serif;
---mono:'IBM Plex Mono',ui-monospace,Menlo,monospace}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
-a{color:inherit}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px 96px}
-.top{padding:64px 0 34px;border-bottom:1px solid var(--line)}
-.mark{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.4vw,42px);letter-spacing:.06em;margin:0;color:var(--neon);text-wrap:balance}
-.sub{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.22em;color:var(--ink-soft);margin:14px 0 0}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding-top:34px}
-.plate{display:flex;flex-direction:column;text-decoration:none;background:var(--panel);border:var(--ew) solid var(--line);transition:border-color .22s,box-shadow .22s,transform .22s}
-.frame{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0B0710}
-.shot{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.72);transition:filter .3s,transform .35s}
-.plate:hover,.plate:focus-visible{border-color:var(--neon);box-shadow:0 0 34px -6px var(--neon),inset 0 0 22px -14px var(--neon);transform:translateY(-3px);outline:none}
-.plate:hover .shot,.plate:focus-visible .shot{filter:saturate(1);transform:scale(1.035)}
-.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:repeating-linear-gradient(135deg,#0B0710 0 11px,#0D0813 11px 22px)}
-.empty-mark{width:34px;height:34px;border:1px solid var(--line);transform:rotate(45deg)}
-.empty-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.24em;color:var(--ink-soft)}
-.meta{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px}
-.name{font-family:var(--display);font-weight:500;font-size:clamp(15px,1.5vw,19px);letter-spacing:.03em;margin:0;color:var(--ink);text-wrap:balance}
-.status{margin:0;display:flex;align-items:center;gap:9px;font-family:var(--mono);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--ink-soft);flex:none}
-.is-progress .status{color:var(--alt)}
-.is-progress .dot{background:var(--alt);box-shadow:0 0 8px var(--alt)}
-}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Rotom — Dmitri Morales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      :root {
+        --neon: #ff3dcb;
+        --alt: #38f0ff;
+        --ground: #08050c;
+        --panel: #100a16;
+        --line: #ff3dcb33;
+        --ink: #ddeaf2;
+        --ink-soft: #7c93a3;
+        --ew: 2px;
+        --display: "Orbitron", "Trebuchet MS", sans-serif;
+        --body: "Rajdhani", "Avenir Next", system-ui, sans-serif;
+        --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--ground);
+        color: var(--ink);
+        font-family: var(--body);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 24px 96px;
+      }
+      .top {
+        padding: 64px 0 34px;
+        border-bottom: 1px solid var(--line);
+      }
+      .mark {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(26px, 4.4vw, 42px);
+        letter-spacing: 0.06em;
+        margin: 0;
+        color: var(--neon);
+        text-wrap: balance;
+      }
+      .sub {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--ink-soft);
+        margin: 14px 0 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+        padding-top: 34px;
+      }
+      .plate {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        background: var(--panel);
+        border: var(--ew) solid var(--line);
+        transition:
+          border-color 0.22s,
+          box-shadow 0.22s,
+          transform 0.22s;
+      }
+      .frame {
+        position: relative;
+        aspect-ratio: 16/10;
+        overflow: hidden;
+        background: #0b0710;
+      }
+      .shot {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.72);
+        transition:
+          filter 0.3s,
+          transform 0.35s;
+      }
+      .plate:hover,
+      .plate:focus-visible {
+        border-color: var(--neon);
+        box-shadow:
+          0 0 34px -6px var(--neon),
+          inset 0 0 22px -14px var(--neon);
+        transform: translateY(-3px);
+        outline: none;
+      }
+      .plate:hover .shot,
+      .plate:focus-visible .shot {
+        filter: saturate(1);
+        transform: scale(1.035);
+      }
+      .empty {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        background: repeating-linear-gradient(
+          135deg,
+          #0b0710 0 11px,
+          #0d0813 11px 22px
+        );
+      }
+      .empty-mark {
+        width: 34px;
+        height: 34px;
+        border: 1px solid var(--line);
+        transform: rotate(45deg);
+      }
+      .empty-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: var(--ink-soft);
+      }
+      .meta {
+        padding: 20px 22px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .name {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: clamp(15px, 1.5vw, 19px);
+        letter-spacing: 0.03em;
+        margin: 0;
+        color: var(--ink);
+        text-wrap: balance;
+      }
+      .status {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--mono);
+        font-weight: 500;
+        font-size: 10.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--ink-soft);
+        flex: none;
+      }
+      .is-progress .status {
+        color: var(--alt);
+      }
+      .is-progress .dot {
+        background: var(--alt);
+        box-shadow: 0 0 8px var(--alt);
+      }
 
-.shell{position:relative;z-index:1}
-.page{max-width:660px;margin:0 auto;padding:56px 24px 120px}
-.back{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;margin-bottom:34px;border-bottom:1px solid transparent}
-.back:hover,.back:focus-visible{color:var(--neon);border-bottom-color:var(--neon);outline:none}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);letter-spacing:.04em;color:var(--neon);margin:0;text-wrap:balance;line-height:1.14}
-.pill{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-family:var(--mono);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft);border:1px solid var(--line);padding:6px 13px}
-.pill.prog{color:var(--alt);border-color:#38F0FF44}
-.rule{height:1px;background:var(--line);margin:34px 0 8px}
-.body p{font-size:17.5px;line-height:1.72;margin:22px 0}
-.body strong{color:#fff;font-weight:600}
-.body em{color:var(--ink-soft)}
-.body a{color:var(--neon);text-decoration:none;border-bottom:1px solid #FF3DCB66;padding-bottom:1px}
-.body a:hover,.body a:focus-visible{background:#FF3DCB1A;outline:none}
-.fig{margin:34px 0}
-.fig figcaption{font-family:var(--mono,ui-monospace,monospace);font-size:11.5px;color:var(--ink-soft);margin-top:9px;letter-spacing:.02em;line-height:1.5}
-.fig img{width:100%;display:block;border:1px solid var(--line);filter:saturate(.82)}
-.foot{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft)}
-@media (max-width:720px){.grid{grid-template-columns:1fr}.top{padding-top:44px}.page{padding:40px 20px 90px}}
-@media (prefers-reduced-motion:reduce){.plate,.shot{transition:none}}</style></head><body>
-
-<div class="shell"><article class="page">
-<a class="back" href="../">&larr; Archive</a>
-<h1>Rotom</h1>
-<p class="pill"><span class="dot"></span>complete</p>
-<div class="rule"></div>
-<div class="body"><p>I am a Pokémon fanatic. The first game I ever played was FireRed on a Game Boy Color, and most of my childhood is somewhere in that series.</p>
-<p>When I moved into my first apartment there was a circuit breaker on the wall that honestly ruined the vibe of the room. I had just joined a makerspace and just finished the CNC training, so I had a problem and a machine and no excuse.</p>
-<p>Rotom is a Pokémon that possesses household appliances — it climbs into your fridge, your fan, your lawnmower. Putting one on the breaker panel was less arbitrary than it looks.</p>
-<figure class="fig"><img src="photos/Screenshot 2026-08-21 at 10.57.18.png" alt="The body profile: head spike and lightning-bolt arms in a single flat cut, with the opening left for the panel door." loading="lazy"><figcaption>The body profile: head spike and lightning-bolt arms in a single flat cut, with the opening left for the panel door.</figcaption></figure>
-<p>The constraint that shaped everything was that the breaker still has to work. Nobody is going to unscrew a decoration to reset a tripped circuit, so the door had to stay functional and the whole cover had to come off in one motion.</p>
-<figure class="fig"><img src="photos/Screenshot 2026-08-29 at 19.47.46.png" alt="The full assembly — eyes, mouth and arms as separate parts over the cut body." loading="lazy"><figcaption>The full assembly — eyes, mouth and arms as separate parts over the cut body.</figcaption></figure>
-<p>I cut the main body from MDF on the CNC using VCarve, and 3D-printed the eyes, the mouth and the arms. It mounts on neodymium magnets with a sock as a buffer, which is not a solution I would have arrived at by reasoning about it.</p>
-<figure class="fig"><img src="photos/IMG_0130.jpg" alt="On the wall. The panel door still opens." loading="lazy"><figcaption>On the wall. The panel door still opens.</figcaption></figure><figure class="fig"><img src="photos/Screenshot 2026-08-21 at 10.57.41.png" alt="One of the lightning-bolt arms." loading="lazy"><figcaption>One of the lightning-bolt arms.</figcaption></figure><figure class="fig"><img src="photos/Screenshot 2026-08-21 at 10.57.56.png" alt="An eye." loading="lazy"><figcaption>An eye.</figcaption></figure><figure class="fig"><img src="photos/Screenshot 2026-08-21 at 10.58.09.png" alt="The mouth." loading="lazy"><figcaption>The mouth.</figcaption></figure></div>
-</article></div></body></html>
+      .shell {
+        position: relative;
+        z-index: 1;
+      }
+      .page {
+        max-width: 660px;
+        margin: 0 auto;
+        padding: 56px 24px 120px;
+      }
+      .back {
+        display: inline-block;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        text-decoration: none;
+        margin-bottom: 34px;
+        border-bottom: 1px solid transparent;
+      }
+      .back:hover,
+      .back:focus-visible {
+        color: var(--neon);
+        border-bottom-color: var(--neon);
+        outline: none;
+      }
+      h1 {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(28px, 5vw, 44px);
+        letter-spacing: 0.04em;
+        color: var(--neon);
+        margin: 0;
+        text-wrap: balance;
+        line-height: 1.14;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 22px;
+        font-family: var(--mono);
+        font-weight: 500;
+        font-size: 10.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+        border: 1px solid var(--line);
+        padding: 6px 13px;
+      }
+      .pill.prog {
+        color: var(--alt);
+        border-color: #38f0ff44;
+      }
+      .rule {
+        height: 1px;
+        background: var(--line);
+        margin: 34px 0 8px;
+      }
+      .body p {
+        font-size: 17.5px;
+        line-height: 1.72;
+        margin: 22px 0;
+      }
+      .body strong {
+        color: #fff;
+        font-weight: 600;
+      }
+      .body em {
+        color: var(--ink-soft);
+      }
+      .body a {
+        color: var(--neon);
+        text-decoration: none;
+        border-bottom: 1px solid #ff3dcb66;
+        padding-bottom: 1px;
+      }
+      .body a:hover,
+      .body a:focus-visible {
+        background: #ff3dcb1a;
+        outline: none;
+      }
+      .fig {
+        margin: 34px 0;
+      }
+      .fig figcaption {
+        font-family: var(--mono, ui-monospace, monospace);
+        font-size: 11.5px;
+        color: var(--ink-soft);
+        margin-top: 9px;
+        letter-spacing: 0.02em;
+        line-height: 1.5;
+      }
+      .fig img {
+        width: 100%;
+        display: block;
+        border: 1px solid var(--line);
+        filter: saturate(0.82);
+      }
+      .foot {
+        margin-top: 54px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        font-family: var(--mono);
+        font-size: 10.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+      }
+      @media (max-width: 720px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .top {
+          padding-top: 44px;
+        }
+        .page {
+          padding: 40px 20px 90px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .plate,
+        .shot {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <article class="page">
+        <a class="back" href="../">&larr; Archive</a>
+        <h1>Rotom</h1>
+        <p class="pill"><span class="dot"></span>complete</p>
+        <div class="rule"></div>
+        <div class="body">
+          <p>
+            I am a Pokémon fanatic. The first game I ever played was FireRed on
+            a Game Boy Color, and most of my childhood was spent in the world of
+            Pokémon. My favorite is Squirtle!
+          </p>
+          <p>
+            When I moved into my first apartment there was a circuit breaker on
+            the wall that honestly ruined the vibe of my apartment. I had just
+            joined a makerspace and just finished the CNC training, so I had a
+            problem and a machine and no excuse.
+          </p>
+          <p>
+            Rotom is a Pokémon that possesses household appliances — it climbs
+            into your fridge, your fan, your lawnmower. Putting one on the
+            breaker panel was perfect for my apartment's aesthetic.
+          </p>
+          <figure class="fig">
+            <img
+              src="photos/Screenshot 2026-08-21 at 10.57.18.png"
+              alt="The body profile: head spike and lightning-bolt arms in a single flat cut, with the opening left for the panel door."
+              loading="lazy"
+            />
+            <figcaption>
+              The body profile: head spike and lightning-bolt arms in a single
+              flat cut, with the opening left for the panel door.
+            </figcaption>
+          </figure>
+          <figure class="fig">
+            <img
+              src="photos/Screenshot 2026-08-29 at 19.47.46.png"
+              alt="The full assembly — eyes, mouth and arms as separate parts over the cut body."
+              loading="lazy"
+            />
+            <figcaption>
+              The full assembly — eyes, mouth and arms as separate parts over
+              the cut body.
+            </figcaption>
+          </figure>
+          <p>
+            I cut the main body from MDF on the CNC using VCarve, and 3D-printed
+            the eyes, the mouth and the arms. It mounts on neodymium magnets
+            with a sock as a buffer to easily take it off so management doesn't
+            get mad at me ;) !
+          </p>
+          <figure class="fig">
+            <img
+              src="photos/IMG_0130.jpg"
+              alt="On the wall. The panel door still opens."
+              loading="lazy"
+            />
+            <figcaption>On the wall. The panel door still opens.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img
+              src="photos/Screenshot 2026-08-21 at 10.57.41.png"
+              alt="One of the lightning-bolt arms."
+              loading="lazy"
+            />
+            <figcaption>One of the lightning-bolt arms.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img
+              src="photos/Screenshot 2026-08-21 at 10.57.56.png"
+              alt="An eye."
+              loading="lazy"
+            />
+            <figcaption>An eye.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img
+              src="photos/Screenshot 2026-08-21 at 10.58.09.png"
+              alt="The mouth."
+              loading="lazy"
+            />
+            <figcaption>The mouth.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </div>
+  </body>
+</html>
