@@ -85,3 +85,12 @@ Cut at Dmitri's request. It was the only client work in the archive and the only
 **Card count: 17 → 9.**
 
 The animated neon card went with it, which also **retires the grid-animation exception** — `docs/visual-direction.md`'s rule that the grid page carries no animation is once again true without qualification.
+
+
+## `bme474` renamed — 2026-09-10
+
+**`bme474` → "Wearable BP Cuff During Exercise"**, URL `bme474/` → `wearable-bp-cuff/`. The redirect left at the old path was removed the same day; no course code remains anywhere on the site.
+
+Earlier entries in these docs still say `bme474` because that is what the project was called when those decisions were made. They are left as written — this note is the pointer, not a rewrite.
+
+This closes the naming issue raised in #4: *"course codes are not names."* Both offenders are now named — `bme290` reads as Thor's Hammer PCB, `bme474` as the BP cuff.
