@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="darkreader-lock" />
+    <title>Archive &middot; Dmitri Morales</title>
+    <meta
+      name="description"
+      content="An archive of projects by Dmitri Morales."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --neon: #ff3dcb;
+        --alt: #38f0ff;
+        --ground: #08050c;
+        --panel: #100a16;
+        --line: #ff3dcb33;
+        --ink: #ddeaf2;
+        --ink-soft: #7c93a3;
+        --ew: 2px;
+        --display: "Orbitron", "Trebuchet MS", sans-serif;
+        --body: "Rajdhani", "Avenir Next", system-ui, sans-serif;
+        --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--ground);
+        color: var(--ink);
+        font-family: var(--body);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 24px 96px;
+      }
+      .top {
+        padding: 64px 0 34px;
+        border-bottom: 1px solid var(--line);
+      }
+      .mark {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(26px, 4.4vw, 42px);
+        letter-spacing: 0.06em;
+        margin: 0;
+        color: var(--neon);
+        text-wrap: balance;
+      }
+      .sub {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--ink-soft);
+        margin: 14px 0 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+        padding-top: 34px;
+      }
+      .plate {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        background: var(--panel);
+        border: var(--ew) solid var(--line);
+        transition:
+          border-color 0.22s,
+          box-shadow 0.22s,
+          transform 0.22s;
+      }
+      .frame {
+        position: relative;
+        aspect-ratio: 16/10;
+        overflow: hidden;
+        background: #0b0710;
+      }
+      .shot {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.72);
+        transition:
+          filter 0.3s,
+          transform 0.35s;
+      }
+      .plate:hover,
+      .plate:focus-visible {
+        border-color: var(--neon);
+        box-shadow:
+          0 0 34px -6px var(--neon),
+          inset 0 0 22px -14px var(--neon);
+        transform: translateY(-3px);
+        outline: none;
+      }
+      .plate:hover .shot,
+      .plate:focus-visible .shot {
+        filter: saturate(1);
+        transform: scale(1.035);
+      }
+      .empty {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        background: repeating-linear-gradient(
+          135deg,
+          #0b0710 0 11px,
+          #0d0813 11px 22px
+        );
+      }
+      .empty-mark {
+        width: 34px;
+        height: 34px;
+        border: 1px solid var(--line);
+        transform: rotate(45deg);
+      }
+      .empty-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: var(--ink-soft);
+      }
+      .meta {
+        padding: 20px 22px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .name {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: clamp(15px, 1.5vw, 19px);
+        letter-spacing: 0.03em;
+        margin: 0;
+        color: var(--ink);
+        text-wrap: balance;
+      }
+      .status {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--mono);
+        font-weight: 500;
+        font-size: 10.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--ink-soft);
+        flex: none;
+      }
+      .is-progress .status {
+        color: var(--alt);
+      }
+      .is-progress .dot {
+        background: var(--alt);
+        box-shadow: 0 0 8px var(--alt);
+      }
+
+      .shell {
+        position: relative;
+        z-index: 1;
+      }
+      .page {
+        max-width: 660px;
+        margin: 0 auto;
+        padding: 56px 24px 120px;
+      }
+      .back {
+        display: inline-block;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        text-decoration: none;
+        margin-bottom: 34px;
+        border-bottom: 1px solid transparent;
+      }
+      .back:hover,
+      .back:focus-visible {
+        color: var(--neon);
+        border-bottom-color: var(--neon);
+        outline: none;
+      }
+      h1 {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(28px, 5vw, 44px);
+        letter-spacing: 0.04em;
+        color: var(--neon);
+        margin: 0;
+        text-wrap: balance;
+        line-height: 1.14;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 22px;
+        font-family: var(--mono);
+        font-weight: 500;
+        font-size: 10.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+        border: 1px solid var(--line);
+        padding: 6px 13px;
+      }
+      .pill.prog {
+        color: var(--alt);
+        border-color: #38f0ff44;
+      }
+      .rule {
+        height: 1px;
+        background: var(--line);
+        margin: 34px 0 8px;
+      }
+      .body p {
+        font-size: 17.5px;
+        line-height: 1.72;
+        margin: 22px 0;
+      }
+      .body strong {
+        color: #fff;
+        font-weight: 600;
+      }
+      .body em {
+        color: var(--ink-soft);
+      }
+      .body a {
+        color: var(--neon);
+        text-decoration: none;
+        border-bottom: 1px solid #ff3dcb66;
+        padding-bottom: 1px;
+      }
+      .body a:hover,
+      .body a:focus-visible {
+        background: #ff3dcb1a;
+        outline: none;
+      }
+      .fig {
+        margin: 34px 0;
+      }
+      .fig img {
+        width: 100%;
+        display: block;
+        border: 1px solid var(--line);
+        filter: saturate(0.82);
+      }
+      .foot {
+        margin-top: 54px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        font-family: var(--mono);
+        font-size: 10.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+      }
+
+      /* ---------- drawer ---------- */
+      .tab {
+        position: fixed;
+        top: 22px;
+        left: 22px;
+        z-index: 40;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 12px 15px;
+        background: rgba(16, 10, 22, 0.86);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          color 0.2s,
+          box-shadow 0.2s;
+      }
+      .tab:hover,
+      .tab:focus-visible,
+      .tab[aria-expanded="true"] {
+        border-color: var(--neon);
+        color: var(--neon);
+        box-shadow: 0 0 26px -10px var(--neon);
+        outline: none;
+      }
+      .burger {
+        width: 18px;
+        height: 12px;
+        position: relative;
+        flex: none;
+      }
+      .burger span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1.5px;
+        background: currentColor;
+        transition:
+          transform 0.25s,
+          opacity 0.2s;
+      }
+      .burger span:nth-child(1) {
+        top: 0;
+      }
+      .burger span:nth-child(2) {
+        top: 5px;
+      }
+      .burger span:nth-child(3) {
+        top: 10px;
+      }
+      [aria-expanded="true"] .burger span:nth-child(1) {
+        transform: translateY(5px) rotate(45deg);
+      }
+      [aria-expanded="true"] .burger span:nth-child(2) {
+        opacity: 0;
+      }
+      [aria-expanded="true"] .burger span:nth-child(3) {
+        transform: translateY(-5px) rotate(-45deg);
+      }
+      .scrim {
+        position: fixed;
+        inset: 0;
+        z-index: 38;
+        background: rgba(5, 2, 9, 0.6);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.28s;
+      }
+      .scrim.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .drawer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 272px;
+        max-width: 82vw;
+        z-index: 39;
+        background: var(--panel);
+        border-right: 2px solid var(--line);
+        padding: 96px 26px 26px;
+        transform: translateX(-100%);
+        transition: transform 0.32s cubic-bezier(0.22, 0.8, 0.3, 1);
+      }
+      .drawer.open {
+        transform: none;
+        border-right-color: var(--neon);
+        box-shadow: 0 0 60px -20px var(--neon);
+      }
+      .drawer .eyebrow {
+        font-family: var(--mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: var(--ink-soft);
+        margin: 0 0 16px;
+      }
+      .drawer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .drawer a {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        padding: 11px 0;
+        text-decoration: none;
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        color: var(--ink);
+        border-bottom: 1px solid #ff3dcb1f;
+        transition: color 0.18s;
+      }
+      .drawer a:hover,
+      .drawer a:focus-visible,
+      .drawer a[aria-current] {
+        color: var(--neon);
+        outline: none;
+      }
+      .drawer .idx {
+        font-family: var(--mono);
+        font-size: 9.5px;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+      }
+      /* keep the wordmark clear of the fixed menu tab */
+      .top {
+        padding-top: 104px;
+      }
+
+      @media (max-width: 720px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .top {
+          padding-top: 92px;
+        }
+        .page {
+          padding: 40px 20px 90px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .plate,
+        .shot {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      class="tab"
+      id="tab"
+      aria-expanded="false"
+      aria-controls="drawer"
+      aria-label="Open menu"
+    >
+      <span class="burger" aria-hidden="true"
+        ><span></span><span></span><span></span
+      ></span>
+      <span>Menu</span>
+    </button>
+    <div class="scrim" id="scrim"></div>
+    <nav class="drawer" id="drawer" aria-label="Site">
+      <p class="eyebrow">Dmitri Morales</p>
+      <ul>
+        <li><a href="../"><span class="idx">01</span>Home</a></li>
+        <li>
+          <a href="./" aria-current="page"><span class="idx">02</span>Archive</a>
+        </li>
+        <li><a href="../links/"><span class="idx">03</span>Links</a></li>
+      </ul>
+    </nav>
+
+    <div class="wrap">
+      <header class="top">
+        <h1 class="mark">DMITRI MORALES</h1>
+        <p class="sub">Archive &middot; 9 projects</p>
+      </header>
+      <main class="grid">
+        <a class="plate" href="../thors-hammer-pcb/">
+          <div class="frame">
+            <img
+              class="shot"
+              src="../thors-hammer-pcb/photos/06-img_6355.jpg"
+              alt="Thor's Hammer PCB"
+              loading="lazy"
+            />
+          </div>
+          <div class="meta">
+            <h2 class="name">Thor&#x27;s Hammer PCB</h2>
+            <p class="status">
+              <span class="dot" aria-hidden="true"></span>complete
+            </p>
+          </div></a
+        >
+        <a class="plate" href="../wearable-bp-cuff/">
+          <div class="frame">
+            <img
+              class="shot"
+              src="../wearable-bp-cuff/photos/IMG_7928.jpg"
+              alt="Wearable BP Cuff During Exercise"
+              loading="lazy"
+            />
+          </div>
+          <div class="meta">
+            <h2 class="name">Wearable BP Cuff During Exercise</h2>
+            <p class="status">
+              <span class="dot" aria-hidden="true"></span>complete
+            </p>
+          </div></a
+        >
+        <a class="plate" href="../rotom/">
+          <div class="frame">
+            <img
+              class="shot"
+              src="../rotom/photos/IMG_0130.jpg"
+              alt="Rotom"
+              loading="lazy"
+            />
+          </div>
+          <div class="meta">
+            <h2 class="name">Rotom</h2>
+            <p class="status">
+              <span class="dot" aria-hidden="true"></span>complete
+            </p>
+          </div></a
+        >
+        <a class="plate" href="../ftc-vanta-31000/">
+          <div class="frame">
+            <img
+              class="shot"
+              src="../ftc-vanta-31000/photos/2C7053B4-6C8D-4042-9B07-CD1A84727608.jpg"
+              alt="FTC Vanta 31000"
+              loading="lazy"
+            />
+          </div>
+          <div class="meta">
+            <h2 class="name">FTC Vanta 31000 2025-2026</h2>
+            <p class="status">
+              <span class="dot" aria-hidden="true"></span>complete
+            </p>
+          </div></a
+        >
+        <a class="plate" href="../eeg-turned-emg/">
+          <div class="frame">
+            <img
+              class="shot"
+              src="../eeg-turned-emg/photos/34ABB43E-3F8C-4977-8087-026A2E770EA5.jpg"
+              alt="EEG-turned-EMG"
+              loading="lazy"
+            />
+          </div>
+          <div class="meta">
+            <h2 class="name">EEG-turned-EMG</h2>
+            <p class="status">
+              <span class="dot" aria-hidden="true"></span>complete
+            </p>
+          </div></a
+        >
+        <a class="plate is-progress" href="../tympanometer/">
+          <div class="frame">
+            <img
+              class="shot"
+              src="../tympanometer/photos/01-internals.jpg"
+              alt="mHealth Tympanometer"
+              loading="lazy"
+            />
+          </div>
+          <div class="meta">
+            <h2 class="name">mHealth Tympanometer</h2>
+            <p class="status">
+              <span class="dot" aria-hidden="true"></span>in progress
+            </p>
+          </div></a
+        >
+        <a class="plate" href="../bother-dmitri/">
+          <div class="frame">
+            <img
+              class="shot"
+              src="../bother-dmitri/photos/01-knock-roundtrip.svg"
+              alt="Knock round trip diagram"
+              loading="lazy"
+            />
+          </div>
+          <div class="meta">
+            <h2 class="name">botherDmitri</h2>
+            <p class="status">
+              <span class="dot" aria-hidden="true"></span>complete
+            </p>
+          </div></a
+        >
+        <a class="plate" href="../chess-board-coaster/">
+          <div class="frame">
+            <img
+              class="shot"
+              src="../chess-board-coaster/photos/5785F3A6-8EA4-4C52-A452-60E0BEC7D60F.jpg"
+              alt="Chess Board Coaster"
+              loading="lazy"
+            />
+          </div>
+          <div class="meta">
+            <h2 class="name">Chess Board Coaster</h2>
+            <p class="status">
+              <span class="dot" aria-hidden="true"></span>complete
+            </p>
+          </div></a
+        >
+        <a class="plate" href="../millionaire-club/">
+          <div class="frame">
+            <img
+              class="shot"
+              src="../millionaire-club/photos/01-frame-on-shelf.jpg"
+              alt="Millionaire Club Frame"
+              loading="lazy"
+            />
+          </div>
+          <div class="meta">
+            <h2 class="name">Millionaire Club Frame</h2>
+            <p class="status">
+              <span class="dot" aria-hidden="true"></span>complete
+            </p>
+          </div></a
+        >
+      </main>
+    </div>
+    <script>
+      (function () {
+        var tab = document.getElementById("tab");
+        var drawer = document.getElementById("drawer");
+        var scrim = document.getElementById("scrim");
+        function setOpen(open) {
+          tab.setAttribute("aria-expanded", String(open));
+          drawer.classList.toggle("open", open);
+          scrim.classList.toggle("open", open);
+        }
+        tab.addEventListener("click", function () {
+          setOpen(tab.getAttribute("aria-expanded") !== "true");
+        });
+        scrim.addEventListener("click", function () {
+          setOpen(false);
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setOpen(false);
+        });
+      })();
+    </script>
+  </body>
+</html>

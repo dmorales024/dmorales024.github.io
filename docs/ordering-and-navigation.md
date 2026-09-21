@@ -35,6 +35,32 @@ Rotom and the mentorship are at **zero material today** — the same condition t
 
 > **Open:** the full 17-card rank order is not pinned. Only the top is. Revisit once photos and blurbs land.
 
+
+## Amended 2026-09-20 — the site is now three pages
+
+The root is no longer the grid. Dmitri asked for the head-scan page as the home page,
+with the archive and a links page reachable from it.
+
+| Path | What it is |
+|---|---|
+| `/` | **Home.** The scan card — one screen, no scroll, contact links at its foot. Promoted from prototype variant A. |
+| `/archive/` | **The grid**, unchanged in design. Moved here from `/`. |
+| `/links/` | **Links** — GitHub, LinkedIn, Onshape, email, with a photo of Dmitri. Built on prototype variant F (module grid). |
+| `/<project>/` | Unchanged. |
+
+### What this changed elsewhere
+
+- **The nine project pages each had one line changed** — `<a class="back" href="../">`
+  became `href="../archive/"`, so "← Archive" still lands on the archive rather than on
+  the new home page. Nothing else on those pages was touched.
+- The archive page's own links were rewritten one level up (`../<project>/`,
+  `../<project>/photos/...`).
+- **Navigation is no longer "scroll, that's it."** A drawer in the top left carries
+  Home / Archive / Links and now appears on the home, archive and links pages. The
+  project pages still rely on their single back link — deliberately, to keep the change
+  to them to one line. Worth revisiting if the drawer proves useful.
+- The "no dates, no search, no filter" rules for the grid itself still stand.
+
 ## Page structure
 
 - **One grid, all 17 cards, visible at once.** No featured strip, no sections. A "featured" area would be the site editorializing about itself and would split the page into the good stuff and the rest — against the archive-first thesis.

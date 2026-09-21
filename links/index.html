@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="darkreader-lock" />
+    <title>Links &middot; Dmitri Morales</title>
+    <meta
+      name="description"
+      content="Where to find Dmitri Morales — GitHub, LinkedIn, Onshape, email."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --neon: #ff3dcb;
+        --alt: #38f0ff;
+        --ground: #08050c;
+        --panel: #100a16;
+        --line: #ff3dcb33;
+        --ink: #ddeaf2;
+        --ink-soft: #7c93a3;
+        --display: "Orbitron", "Trebuchet MS", sans-serif;
+        --body: "Rajdhani", "Avenir Next", system-ui, sans-serif;
+        --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--ground);
+        color: var(--ink);
+        font-family: var(--body);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: var(--ink-soft);
+        margin: 0;
+      }
+
+      /* ---------- the module grid ---------- */
+      .grid {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1.04fr) minmax(0, 0.92fr);
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        grid-template-areas:
+          "menu  title    photo"
+          "stats links    photo"
+          "meta  back     photo";
+        border-top: 1px solid var(--line);
+      }
+      .cell {
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 22px;
+        min-width: 0;
+        min-height: 0;
+      }
+
+      .c-menu {
+        grid-area: menu;
+        position: relative;
+        padding: 0;
+        z-index: 30;
+      }
+      .c-title {
+        grid-area: title;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .c-title h1 {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(22px, 2.6vw, 32px);
+        letter-spacing: 0.04em;
+        color: var(--neon);
+        margin: 8px 0 0;
+        line-height: 1.14;
+      }
+      .c-stats {
+        grid-area: stats;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .stat .k {
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        display: block;
+        margin-bottom: 5px;
+      }
+      .stat .v {
+        font-family: var(--display);
+        font-size: 15px;
+        letter-spacing: 0.03em;
+      }
+      .stat ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .stat ul li {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 12.5px;
+        letter-spacing: 0.02em;
+        line-height: 1.35;
+        color: var(--ink);
+      }
+      .c-links {
+        grid-area: links;
+        padding: 10px 26px 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .c-meta {
+        grid-area: meta;
+        border-bottom: 0;
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        line-height: 2.1;
+      }
+      .c-back {
+        grid-area: back;
+        border-bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+        font-family: var(--mono);
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .c-back a {
+        color: var(--ink-soft);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+      }
+      .c-back a:hover,
+      .c-back a:focus-visible {
+        color: var(--neon);
+        border-bottom-color: var(--neon);
+        outline: none;
+      }
+
+      /* ---------- the portrait ---------- */
+      .c-photo {
+        grid-area: photo;
+        position: relative;
+        margin: 0; /* figure's default 1em/40px margin */
+        padding: 0;
+        border: 1px solid var(--line);
+        overflow: hidden;
+        background: #0b0710;
+      }
+      .c-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 28%;
+        display: block;
+        filter: saturate(0.78) contrast(1.04);
+        transition:
+          filter 0.4s,
+          transform 0.6s;
+      }
+      .c-photo:hover img {
+        filter: saturate(1) contrast(1);
+        transform: scale(1.02);
+      }
+      /* bed the photo into the page with neutral darkness only — no colour cast */
+      .c-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(
+            to right,
+            rgba(8, 5, 12, 0.85) 0%,
+            rgba(8, 5, 12, 0) 34%
+          ),
+          linear-gradient(
+            to top,
+            rgba(8, 5, 12, 0.7) 0%,
+            rgba(8, 5, 12, 0) 38%
+          );
+      }
+      .c-photo figcaption {
+        position: absolute;
+        left: 22px;
+        right: 22px;
+        bottom: 18px;
+        margin: 0;
+        z-index: 2;
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      /* ---------- the link list ---------- */
+      .links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .links li + li {
+        border-top: 1px solid #ff3dcb1f;
+      }
+      .links a,
+      .links button {
+        display: grid;
+        width: 100%;
+        background: none;
+        border: 0;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+        color: inherit;
+        grid-template-columns: 34px minmax(0, 1fr) auto;
+        align-items: baseline;
+        gap: 16px;
+        padding: 18px 4px;
+        text-decoration: none;
+        transition:
+          color 0.18s,
+          background 0.18s,
+          padding-left 0.18s;
+      }
+      .links a:hover,
+      .links a:focus-visible,
+      .links button:hover,
+      .links button:focus-visible {
+        background: #ff3dcb0f;
+        padding-left: 12px;
+        outline: none;
+      }
+      .links .idx {
+        font-family: var(--mono);
+        font-size: 9.5px;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+      }
+      .links .label {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: clamp(17px, 2vw, 22px);
+        letter-spacing: 0.04em;
+        color: var(--ink);
+      }
+      .links a:hover .label,
+      .links a:focus-visible .label,
+      .links button:hover .label,
+      .links button:focus-visible .label {
+        color: var(--neon);
+      }
+      .links .handle.copied {
+        color: var(--neon);
+      }
+      .links .handle {
+        font-family: var(--mono);
+        font-size: 10.5px;
+        letter-spacing: 0.12em;
+        color: var(--ink-soft);
+        text-align: right;
+      }
+
+      /* ---------- drawer (the top-left cell IS the menu) ---------- */
+      .menubtn {
+        width: 100%;
+        height: 100%;
+        min-height: 78px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 22px;
+        background: none;
+        border: 0;
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          color 0.2s,
+          background 0.2s;
+      }
+      .menubtn:hover,
+      .menubtn:focus-visible,
+      .menubtn[aria-expanded="true"] {
+        color: var(--neon);
+        background: #ff3dcb0f;
+        outline: none;
+      }
+      .burger {
+        width: 18px;
+        height: 12px;
+        position: relative;
+        flex: none;
+      }
+      .burger span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1.5px;
+        background: currentColor;
+        transition:
+          transform 0.25s,
+          opacity 0.2s;
+      }
+      .burger span:nth-child(1) {
+        top: 0;
+      }
+      .burger span:nth-child(2) {
+        top: 5px;
+      }
+      .burger span:nth-child(3) {
+        top: 10px;
+      }
+      [aria-expanded="true"] .burger span:nth-child(1) {
+        transform: translateY(5px) rotate(45deg);
+      }
+      [aria-expanded="true"] .burger span:nth-child(2) {
+        opacity: 0;
+      }
+      [aria-expanded="true"] .burger span:nth-child(3) {
+        transform: translateY(-5px) rotate(-45deg);
+      }
+      .panel {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: -1px;
+        background: var(--panel);
+        border: 1px solid var(--neon);
+        border-top: 0;
+        padding: 14px 22px 18px;
+        transform: scaleY(0);
+        transform-origin: top;
+        opacity: 0;
+        transition:
+          transform 0.26s cubic-bezier(0.22, 0.8, 0.3, 1),
+          opacity 0.18s;
+      }
+      .panel.open {
+        transform: none;
+        opacity: 1;
+      }
+      .panel ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .panel a {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        padding: 11px 0;
+        text-decoration: none;
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        color: var(--ink);
+        border-bottom: 1px solid #ff3dcb1f;
+        transition: color 0.18s;
+      }
+      .panel a:hover,
+      .panel a:focus-visible,
+      .panel a[aria-current] {
+        color: var(--neon);
+        outline: none;
+      }
+      .panel .idx {
+        font-family: var(--mono);
+        font-size: 9.5px;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          height: auto;
+          grid-template-columns: 1fr;
+          grid-template-rows: none;
+          grid-template-areas:
+            "menu"
+            "title"
+            "photo"
+            "links"
+            "stats"
+            "back"
+            "meta";
+        }
+        .cell {
+          border-right: 0;
+        }
+        .c-photo {
+          height: 62vh;
+        }
+        .c-links {
+          padding: 10px 20px 22px;
+        }
+        .links a {
+          grid-template-columns: 28px minmax(0, 1fr);
+          gap: 6px 12px;
+        }
+        .links .handle {
+          grid-column: 2;
+          text-align: left;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="cell c-menu">
+        <button
+          class="menubtn"
+          id="menubtn"
+          aria-expanded="false"
+          aria-controls="panel"
+        >
+          <span class="burger" aria-hidden="true"
+            ><span></span><span></span><span></span
+          ></span>
+          <span>Menu</span>
+        </button>
+        <nav class="panel" id="panel" aria-label="Site">
+          <ul>
+            <li><a href="../"><span class="idx">01</span>Home</a></li>
+            <li><a href="../archive/"><span class="idx">02</span>Archive</a></li>
+            <li>
+              <a href="./" aria-current="page"><span class="idx">03</span>Links</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="cell c-title">
+        <p class="eyebrow">Links</p>
+        <h1>WHERE TO FIND ME</h1>
+      </div>
+
+      <div class="cell c-stats">
+        <div class="stat">
+          <span class="k">Name</span><span class="v">Dmitri Morales</span>
+        </div>
+        <div class="stat">
+          <span class="k">Field</span>
+          <ul>
+            <li>Biomedical Engineering</li>
+            <li>Robotics</li>
+            <li>Embedded Systems</li>
+            <li>Computer Science</li>
+          </ul>
+        </div>
+        <div class="stat">
+          <span class="k">Based</span><span class="v">Orlando, FL</span>
+        </div>
+      </div>
+
+      <div class="cell c-links">
+        <ul class="links">
+          <li>
+            <a href="https://github.com/dmorales024">
+              <span class="idx">01</span><span class="label">GitHub</span>
+              <span class="handle">dmorales024</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/dmitri-morales-b31042222/">
+              <span class="idx">02</span><span class="label">LinkedIn</span>
+              <span class="handle">dmitri-morales</span>
+            </a>
+          </li>
+          <li>
+            <button type="button" id="copyEmail" data-copy="dmitrimorales024@gmail.com">
+              <span class="idx">03</span><span class="label">Email</span>
+              <span class="handle" id="emailHandle" aria-live="polite"
+                >dmitrimorales024@gmail.com</span
+              >
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="cell c-meta">
+        Links &mdash; 001<br />Rev. 2026
+      </div>
+
+      <div class="cell c-back">
+        <a href="../">&larr; Home</a>
+        <a href="../archive/">Archive</a>
+      </div>
+
+      <figure class="cell c-photo">
+        <img
+          src="../assets/dmitri-portrait.jpg"
+          alt="Dmitri Morales outdoors in a navy suit, Duke Chapel behind him"
+          width="710"
+          height="934"
+        />
+        <figcaption>Dmitri Morales &middot; Duke</figcaption>
+      </figure>
+    </div>
+
+    <script>
+      // Clicking the email row copies the address rather than launching a mail app.
+      (function () {
+        var btn = document.getElementById("copyEmail");
+        var out = document.getElementById("emailHandle");
+        var address = btn.dataset.copy;
+        var timer = null;
+
+        function flash(msg, ok) {
+          out.textContent = msg;
+          out.classList.toggle("copied", ok);
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            out.textContent = address;
+            out.classList.remove("copied");
+          }, 2200);
+        }
+
+        function legacyCopy(text) {
+          // clipboard API needs a secure context; file:// and plain http don't get one
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.top = "-1000px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try {
+            ok = document.execCommand("copy");
+          } catch (e) {
+            ok = false;
+          }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        btn.addEventListener("click", function () {
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(address).then(
+              function () {
+                flash("Copied to clipboard", true);
+              },
+              function () {
+                flash(legacyCopy(address) ? "Copied to clipboard" : address, true);
+              },
+            );
+          } else {
+            flash(legacyCopy(address) ? "Copied to clipboard" : address, true);
+          }
+        });
+      })();
+
+      (function () {
+        var btn = document.getElementById("menubtn");
+        var panel = document.getElementById("panel");
+        function setOpen(open) {
+          btn.setAttribute("aria-expanded", String(open));
+          panel.classList.toggle("open", open);
+        }
+        btn.addEventListener("click", function () {
+          setOpen(btn.getAttribute("aria-expanded") !== "true");
+        });
+        document.addEventListener("click", function (e) {
+          if (!panel.contains(e.target) && !btn.contains(e.target))
+            setOpen(false);
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setOpen(false);
+        });
+      })();
+    </script>
+  </body>
+</html>

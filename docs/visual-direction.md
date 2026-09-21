@@ -75,3 +75,18 @@ Study D "Plates": photo-maximal, fixed two-up, four per screen, all plates ident
 ## Accessibility
 
 `prefers-reduced-motion: reduce` must suppress the motif field entirely (fall back to the static field), and the manual motion control must remain.
+
+## Amended 2026-09-20 — the scan, and Dark Reader
+
+**"Not doing: Dmitri's face" is now partly superseded.** That rule was about tracing a
+photo into *orthogonal line art* for the backdrop motif field, which rendered as noise.
+It did not anticipate a real 3D scan. The home page is now a rotating point-cloud scan of
+Dmitri's head (`assets/head-scan.html`, ~1.3 MB, three.js from CDN, GLB inlined as a
+data URI). The motif-field spec above is still deferred and unrelated.
+
+**Every page now carries `<meta name="darkreader-lock">` and `color-scheme: dark`.**
+The palette is a committed single dark theme with no light mode, so an extension
+re-theming it can only produce something wrong. This also fixed a real bug: the scan
+iframe had a semi-transparent background and was falling through to the browser's white
+iframe base.
+
