@@ -36,6 +36,7 @@ a{color:inherit}
 h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);letter-spacing:.04em;color:var(--neon);margin:0;text-wrap:balance;line-height:1.14}
 .pill{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-family:var(--mono);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft);border:1px solid var(--line);padding:6px 13px}
 .pill.prog{color:var(--alt);border-color:#38F0FF44}
+.meta-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px}.meta-row .pill{margin-top:0}.pill.src{text-decoration:none;color:var(--ink);border-color:#ff3dcb55;transition:color .18s,border-color .18s,box-shadow .18s}.pill.src:hover,.pill.src:focus-visible{color:var(--neon);border-color:var(--neon);box-shadow:0 0 22px -10px var(--neon);outline:none}
 .rule{height:1px;background:var(--line);margin:34px 0 8px}
 .body p{font-size:17.5px;line-height:1.72;margin:22px 0}
 .body strong{color:#fff;font-weight:600}
@@ -51,7 +52,7 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,44px);let
 <div class="shell"><article class="page">
 <a class="back" href="../archive/">&larr; Archive</a>
 <h1>botherDmitri</h1>
-<p class="pill"><span class="dot"></span>complete</p>
+<div class="meta-row"><p class="pill"><span class="dot"></span>complete</p><a class="pill src" href="https://github.com/dmorales024/botherDmitri" target="_blank" rel="noopener noreferrer">Source on GitHub &nearr;</a></div>
 <div class="rule"></div>
 <div class="body"><p>Press a button on my nrf52833dk and my phone makes a noise. That is the entire product.</p>
 <p>At work, my coworkers love to tap my shoulder while I have my noise cancelling headphones on, and truthfully, it scares me every time. In order to prevent me flailing like a cat multiple times throughout the workday, I created this small project. The nrf52833dk connects to a Swift application on my phone, and when it receives an ACK notification from the button press, it triggers the app to play any noise I choose. It will shadow the current music I have playing, and play the noise, indicating a *knock* has occured.</p>

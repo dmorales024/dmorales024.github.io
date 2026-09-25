@@ -234,6 +234,32 @@
         border: 1px solid var(--line);
         padding: 6px 13px;
       }
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-top: 22px;
+      }
+      .meta-row .pill {
+        margin-top: 0;
+      }
+      .pill.src {
+        text-decoration: none;
+        color: var(--ink);
+        border-color: #ff3dcb55;
+        transition:
+          color 0.18s,
+          border-color 0.18s,
+          box-shadow 0.18s;
+      }
+      .pill.src:hover,
+      .pill.src:focus-visible {
+        color: var(--neon);
+        border-color: var(--neon);
+        box-shadow: 0 0 22px -10px var(--neon);
+        outline: none;
+      }
       .pill.prog {
         color: var(--alt);
         border-color: #38f0ff44;
@@ -317,7 +343,12 @@
       <article class="page">
         <a class="back" href="../archive/">&larr; Archive</a>
         <h1>Rotom</h1>
-        <p class="pill"><span class="dot"></span>complete</p>
+        <div class="meta-row">
+          <p class="pill"><span class="dot"></span>complete</p>
+          <a class="pill src" href="https://github.com/dmorales024/Rotom" target="_blank" rel="noopener noreferrer"
+            >Source on GitHub &nearr;</a
+          >
+        </div>
         <div class="rule"></div>
         <div class="body">
           <p>
